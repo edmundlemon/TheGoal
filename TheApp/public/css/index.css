@@ -19,47 +19,48 @@ body {
     padding-top: 60px; /* Adjust based on the height of your navbar */
 }
 
-header {
-    background-color: #0f281e;
+/* Navbar Styles */
+.navbar {
+    background-color: rgba(15, 40, 30, 0.9); /* Solid background color */
     padding: 10px 10px;
-    position: fixed; /* Make the navbar fixed */
-    top: 0; /* Position it at the top of the viewport */
-    width: 100%; /* Ensure it spans the full width of the viewport */
-    z-index: 1000; /* Ensure it stays above other content */
-}
-
-nav {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0; /* Ensure the header stays at the top */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-nav .logo {
+.navbar .logo {
     font-size: 24px;
     font-weight: 900;
     color: white;
     padding: 10px 10px;
-    align-self: center;
 }
 
-nav ul {
+.navbar .logo:hover{
+cursor: pointer;
+}
+
+.menu {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
 }
 
-nav ul li {
+.menu li {
     margin: 0 10px;
 }
 
-nav ul li a {
+.menu li a {
     color: white;
     text-decoration: none;
     font-size: 16px;
 }
 
-nav .contact-button {
+.contact-button {
     background-color: white;
     color: #0f281e;
     font-weight: 700;
@@ -285,4 +286,20 @@ footer ul li {
 footer ul li a {
     color: white;
     text-decoration: none;
+}
+
+/* Social Icons in Footer */
+footer .social-icons {
+    margin: 20px 0;
+}
+
+footer .social-icons a {
+    color: white;
+    font-size: 25px;
+    margin: 0 50px;
+    text-decoration: none;
+}
+
+footer .social-icons a:hover {
+    color: #28a745;
 }

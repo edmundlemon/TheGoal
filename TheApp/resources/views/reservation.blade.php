@@ -4,22 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meeting Request Form</title>
-    <link rel="stylesheet" href="reserve.css">
+    <link rel="stylesheet" href="{{ asset('css/reserve.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
-            &nbsp;<div class="logo">CAREN</div>
+            &nbsp;<div class="logo" onclick="window.location.href='/'">CAREN</div>
             <ul class="menu" id="navbar-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="reserve.html#">Reservation</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/reservation">Reservation</a></li>
             </ul>
-            <button class="contact-button" onclick="window.location.href='acc.html'">Login</button>&nbsp;
+            <button class="contact-button" onclick="window.location.href='/login'">Login</button>&nbsp;
         </nav>
     </header>
     
@@ -31,11 +30,20 @@
             
             <form id="meeting-form">
                 <label for="date">Select a date and time *</label>
-                <input type="text" id="date-picker" name="date" required>
+                <input type="date" id="date-picker" name="date" required>
                 
                 <label for="time">Select a time slot *</label>
                 <select id="time-slot" name="time" required>
-                    <option value="">Select a time slot</option>
+                    <option value="" disabled selected>Select a time slot</option>
+                    <option value="9:00 AM">9:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="1:00 PM">1:00 PM</option>
+                    <option value="2:00 PM">2:00 PM</option>
+                    <option value="3:00 PM">3:00 PM</option>
+                    <option value="4:00 PM">4:00 PM</option>
+                    <option value="5:00 PM">5:00 PM</option>
                 </select>
 
                 <label for="name">Name *</label>
@@ -72,17 +80,25 @@
     </main>
     
     <footer><br>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
         <ul>
-            <li><a href="index2.html#services">Services</a></li>
-            <li><a href="index2.html#appointment">Schedule Appointment</a></li>
-            <li><a href="index2.html#intake">Complete Intake</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="index2.html#contact">Contact</a></li>
+
+            <li><a href="/reservation">Schedule Appointment</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+            <li><a href="/faq">FAQ</a></li>
+
         </ul>
-        <br><p>Web design by CAREN</p>
+        <br><br>
+        <p>&copy; 2024 CAREN. All Rights Reserved. Terms & Conditions</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
-    <script src="reserve.js"></script>
+    <script>
+
+    </script>
 </body>
 </html>

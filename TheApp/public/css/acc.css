@@ -22,7 +22,7 @@ body {
 
 /* Navbar Styles */
 .navbar {
-    background-color: rgba(15, 40, 30, 1); /* Solid background color */
+    background-color: rgba(15, 40, 30, 0.9); /* Solid background color */
     padding: 10px 10px;
     position: fixed;
     width: 100%;
@@ -38,6 +38,10 @@ body {
     font-weight: 900;
     color: white;
     padding: 10px 10px;
+}
+
+.navbar .logo:hover{
+cursor: pointer;
 }
 
 .menu {
@@ -204,6 +208,7 @@ body {
     cursor: pointer;
     display: block;
     margin: auto;
+    margin-top: 2vh;
     background: linear-gradient(to right , rgba(192, 178, 178, 0.63),rgba(182, 175, 175, 0.801));
     border: 0;
     outline: none;
@@ -243,4 +248,20 @@ span {
 .copyright {
     text-align: center;
     color: white;
+}
+
+/* Social Icons in Footer */
+footer .social-icons {
+    margin: 20px 0;
+}
+
+footer .social-icons a {
+    color: white;
+    font-size: 25px;
+    margin: 0 50px;
+    text-decoration: none;
+}
+
+footer .social-icons a:hover {
+    color: #28a745;
 }

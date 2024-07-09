@@ -7,7 +7,31 @@ use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\CustomersController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+
+Route::get('/menu', function () {
+    return view('menu');
+});
+
+Route::get('/reservation', function () {
+    return view('reservation');
+});
+
+Route::get('/feedback', function () {
+    return view('feedback');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+Route::get('/faq', function () {
+    return view('faq');
 });
 
 Route::middleware(['guest'])->group(function () {

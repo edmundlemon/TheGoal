@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAREN - FAQs</title>
-    <link rel="stylesheet" href="faq.css">
+    <link rel="stylesheet" href="{{ asset('css/faq.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
-            &nbsp;<div class="logo">CAREN</div>
+            &nbsp;<div class="logo" onclick="window.location.href='/'">CAREN</div>
             <ul class="menu" id="navbar-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="reserve.html#">Reservation</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/reservation">Reservation</a></li>
             </ul>
-            <button class="contact-button" onclick="window.location.href='acc.html'">Login</button>&nbsp;
+            <button class="contact-button" onclick="window.location.href='/login'">Login</button>&nbsp;
         </nav>
     </header>
 
@@ -64,14 +63,20 @@
     </section>
 
     <footer><br>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
         <ul>
-            <li><a href="index2.html#services">Services</a></li>
-            <li><a href="index2.html#appointment">Schedule Appointment</a></li>
-            <li><a href="index2.html#intake">Complete Intake</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="index2.html#contact">Contact</a></li>
+
+            <li><a href="/reservation">Schedule Appointment</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+            <li><a href="/faq">FAQ</a></li>
+
         </ul>
-        <br><p>Web design by CAREN</p>
+        <br><br>
+        <p>&copy; 2024 CAREN. All Rights Reserved. Terms & Conditions</p>
     </footer>
 </body>
 </html>

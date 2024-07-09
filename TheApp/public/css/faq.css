@@ -20,47 +20,48 @@ body {
     color: #fff; /* Default text color to white for better contrast against the background */
 }
 
-header {
+/* Navbar Styles */
+.navbar {
+    background-color: rgba(15, 40, 30, 0.9); /* Solid background color */
+    padding: 10px 10px;
     position: fixed;
     width: 100%;
     z-index: 100;
-    background-color: rgba(15, 40, 30, 1); /* Solid background color */
-    padding: 10px 10px;
     top: 0; /* Ensure the header stays at the top */
-}
-
-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-nav .logo {
+.navbar .logo {
     font-size: 24px;
     font-weight: 900;
     color: white;
     padding: 10px 10px;
-    align-self: center;
 }
 
-nav ul {
+.navbar .logo:hover{
+cursor: pointer;
+}
+
+.menu {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
 }
 
-nav ul li {
+.menu li {
     margin: 0 10px;
 }
 
-nav ul li a {
+.menu li a {
     color: white;
     text-decoration: none;
     font-size: 16px;
 }
 
-nav .contact-button {
+.contact-button {
     background-color: white;
     color: #0f281e;
     font-weight: 700;
@@ -204,7 +205,7 @@ section {
     text-align: center;
 }
 
-.faq-container h2 {
+faq-container h2 {
     font-size: 36px;
     margin-bottom: 10px;
 }
@@ -283,4 +284,20 @@ footer ul li {
 footer ul li a {
     color: white;
     text-decoration: none;
+}
+
+/* Social Icons in Footer */
+footer .social-icons {
+    margin: 20px 0;
+}
+
+footer .social-icons a {
+    color: white;
+    font-size: 25px;
+    margin: 0 50px;
+    text-decoration: none;
+}
+
+footer .social-icons a:hover {
+    color: #28a745;
 }
