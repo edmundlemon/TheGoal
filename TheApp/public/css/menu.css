@@ -22,7 +22,7 @@ body {
 
 /* Navbar Styles */
 .navbar {
-    background-color: rgba(15, 40, 30, 1); /* Solid background color */
+    background-color: rgba(15, 40, 30, 0.9); /* Solid background color */
     padding: 10px 10px;
     position: fixed;
     width: 100%;
@@ -31,7 +31,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px; /* Set a height for the navbar */
 }
 
 .navbar .logo {
@@ -39,6 +38,10 @@ body {
     font-weight: 900;
     color: white;
     padding: 10px 10px;
+}
+
+.navbar .logo:hover{
+cursor: pointer;
 }
 
 .menu {
@@ -69,8 +72,123 @@ body {
     font-size: 16px;
 }
 
-main {
-    padding-top: 100px; /* Add top padding to ensure content is not covered by the navbar */
+.hero-section {
+    position: relative;
+    padding: 50px 20px;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+.hero-section .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fade 30s infinite;
+}
+
+.hero-section .background-image.image1 {
+    background-image: url('https://wrench.com/blog/content/images/size/w2000/2021/04/eco-friendly-driving-habits.jpg');
+    animation-delay: 0s;
+}
+
+.hero-section .background-image.image2 {
+    background-image: url('https://4.bp.blogspot.com/-2Xw0uGzvC4A/XKJLeHMpRRI/AAAAAAAATq0/Uy54PsC-sNQVnD7OXckSOJAU_rcUGKWjwCLcBGAs/w1200-h630-p-k-no-nu/Road-Trip-Games-HERO.jpg');
+    animation-delay: 10s;
+}
+
+.hero-section .background-image.image3 {
+    background-image: url('https://clubsolutionsmagazine.com/wp-content/uploads/2018/05/shutterstock_287323136.jpg');
+    animation-delay: 20s;
+}
+
+@keyframes fade {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    30% { opacity: 1; }
+    40% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.form-container {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px; /* Adjust the width to match previous size */
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.form-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.form-tab {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    max-width: 120px; /* Adjust the width of the tabs */
+}
+
+.form-tab.active,
+.form-tab:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.rental-form {
+    display: none;
+}
+
+.rental-form.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="time"] {
+    width: calc(50% - 10px);
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.form-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
 .car-models {
@@ -82,7 +200,6 @@ main {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    margin-top: 20px; /* Add some top margin to create space between the navbar and the car categories */
 }
 
 .category-btn {
@@ -208,4 +325,20 @@ footer ul li {
 footer ul li a {
     color: white;
     text-decoration: none;
+}
+
+/* Social Icons in Footer */
+footer .social-icons {
+    margin: 20px 0;
+}
+
+footer .social-icons a {
+    color: white;
+    font-size: 25px;
+    margin: 0 50px;
+    text-decoration: none;
+}
+
+footer .social-icons a:hover {
+    color: #28a745;
 }

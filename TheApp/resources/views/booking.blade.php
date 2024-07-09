@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rent A Car in Malaysia</title>
-    <link rel="stylesheet" href="booking.css">
+    <link rel="stylesheet" href="{{ asset('css/booking.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="booking.js" defer></script>
 </head>
 <body>
     <header>
         <nav class="navbar">
-            &nbsp;<div class="logo">CAREN</div>
+            &nbsp;<div class="logo" onclick="window.location.href='/'">CAREN</div>
             <ul class="menu" id="navbar-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="reserve.html#">Reservation</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/reservation">Reservation</a></li>
             </ul>
-            <button class="contact-button" onclick="window.location.href='acc.html'">Login</button>&nbsp;
+            <button class="contact-button" onclick="window.location.href='/login'">Login</button>&nbsp;
         </nav>
     </header>
     
@@ -36,7 +36,7 @@
                 <!-- Compact Cars -->
                 <div class="car-item" data-category="compact">
                     <div class="image-container">
-                        <img src="C:\Users\Gigabyte\Documents\FYP\carimage\toyotayaris.png" alt="Toyota Yaris 1.5">
+                        <img src="carimage/toyotayaris.png" alt="Toyota Yaris 1.5">
                     </div>
                     <h3>Toyota Yaris 1.5 (A)</h3>
                     <div class="car-features">
@@ -58,7 +58,12 @@
                         </div>
                     </div>
                     <p>From MYR 300.00</p>
-                    <button>Book Now</button>
+                    <button onclick="selectVehicle({
+                        image: 'carimage/toyotayaris.png',
+                        name: 'Toyota Yaris 1.5 (A)',
+                        specs: ['Compact', 'Gasoline', '5 Seats', 'Automatic'],
+                        price: 'From MYR 300.00'
+                    })">Book Now</button>
                 </div>
                 <div class="car-item" data-category="compact">
                     <div class="image-container">
@@ -747,14 +752,20 @@
     </main>
 
     <footer><br>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
         <ul>
-            <li><a href="index2.html#services">Services</a></li>
-            <li><a href="index2.html#appointment">Schedule Appointment</a></li>
-            <li><a href="index2.html#intake">Complete Intake</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="index2.html#contact">Contact</a></li>
+
+            <li><a href="/reservation">Schedule Appointment</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+            <li><a href="/faq">FAQ</a></li>
+
         </ul>
-        <br><p>Web design by CAREN</p>
+        <br><br>
+        <p>&copy; 2024 CAREN. All Rights Reserved. Terms & Conditions</p>
     </footer>
 
     <script src="menu.js"></script>
@@ -786,6 +797,11 @@
     
         // Set default category to show all car items
         document.querySelector('.category-btn[data-category="all"]').click();
+
+        function selectVehicle(vehicle) {
+    localStorage.setItem("selectedVehicle", JSON.stringify(vehicle));
+    window.location.href = "cart.html";
+}
     </script>    
 </body>
 </html>
