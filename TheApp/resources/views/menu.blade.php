@@ -88,7 +88,8 @@
             </div>
             <div class="car-list">
                 <!-- Car Display Card -->
-                @foreach ($cars as $car)
+                
+                {{-- @foreach ($cars as $car)
                     {
                     <div class="car-item" data-category="{{ $car->category }}">
                         <div class="image-container">
@@ -118,7 +119,7 @@
                         <p>{{ 'From MYR ' + $car->price }} </p>
                         <button onclick="function($car->id)">Book Now</button>
                     </div>
-                    }
+                    } --}}
 
             </div>
         </section>
