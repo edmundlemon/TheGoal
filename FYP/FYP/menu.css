@@ -1,0 +1,324 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: rgba(15, 40, 30, 1); /* Solid background color */
+    padding: 10px 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0; /* Ensure the header stays at the top */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: 900;
+    color: white;
+    padding: 10px 10px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin: 0 10px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.contact-button {
+    background-color: white;
+    color: #0f281e;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.hero-section {
+    position: relative;
+    padding: 50px 20px;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+.hero-section .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fade 30s infinite;
+}
+
+.hero-section .background-image.image1 {
+    background-image: url('https://wrench.com/blog/content/images/size/w2000/2021/04/eco-friendly-driving-habits.jpg');
+    animation-delay: 0s;
+}
+
+.hero-section .background-image.image2 {
+    background-image: url('https://4.bp.blogspot.com/-2Xw0uGzvC4A/XKJLeHMpRRI/AAAAAAAATq0/Uy54PsC-sNQVnD7OXckSOJAU_rcUGKWjwCLcBGAs/w1200-h630-p-k-no-nu/Road-Trip-Games-HERO.jpg');
+    animation-delay: 10s;
+}
+
+.hero-section .background-image.image3 {
+    background-image: url('https://clubsolutionsmagazine.com/wp-content/uploads/2018/05/shutterstock_287323136.jpg');
+    animation-delay: 20s;
+}
+
+@keyframes fade {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    30% { opacity: 1; }
+    40% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.form-container {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px; /* Adjust the width to match previous size */
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.form-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.form-tab {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    max-width: 120px; /* Adjust the width of the tabs */
+}
+
+.form-tab.active,
+.form-tab:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.rental-form {
+    display: none;
+}
+
+.rental-form.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="time"] {
+    width: calc(50% - 10px);
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.form-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.car-models {
+    padding: 20px;
+    text-align: center;
+}
+
+.car-categories {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.category-btn {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.car-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.car-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 20px;
+    width: 30%; /* Adjust the width to fit 3 boxes per row */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.car-item .image-container {
+    height: 200px; /* Adjust the height for the image container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Hide overflow to maintain uniformity */
+}
+
+.car-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensure the image fits within the container */
+    border-radius: 8px;
+}
+
+.car-item h3 {
+    margin: 10px 0 5px 0; /* Reduce the bottom margin to decrease gap */
+    font-size: 1.2em;
+    min-height: 60px; /* Ensure consistent height for titles */
+}
+
+.car-item p {
+    margin: 10px 0; /* Adjust the margins for proper spacing */
+    font-size: 1em;
+    color: #007bff;
+}
+
+.car-item button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Add margin to create space between price and button */
+    align-self: center; /* Center align the button */
+}
+
+.car-item button:hover {
+    background-color: #0056b3;
+}
+
+/* Car Features Styles */
+.car-item .car-features {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center items vertically */
+    gap: 20px; /* Add space between items */
+    flex-wrap: wrap;
+    margin-bottom: 10px; /* Add margin to reduce gap with car name */
+}
+
+.car-item .car-features .feature-item {
+    display: flex;
+    flex-direction: row; /* Align items horizontally */
+    align-items: center;
+    justify-content: center;
+    width: 45%; /* Ensure each item takes 45% of the width */
+    text-align: center; /* Center align text within each item */
+}
+
+.car-item .car-features .feature-item img {
+    width: 24px; /* Adjust as necessary */
+    height: 24px; /* Adjust as necessary */
+    margin-right: 5px; /* Add margin to separate icon and text */
+}
+
+/* Footer */
+footer {
+    background-color: #0f281e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul li {
+    margin: 0 10px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+}

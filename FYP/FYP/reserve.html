@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Request Form</title>
+    <link rel="stylesheet" href="reserve.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            &nbsp;<div class="logo">CAREN</div>
+            <ul class="menu" id="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reserve.html#">Reservation</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <button class="contact-button" onclick="window.location.href='acc.html'">Login</button>&nbsp;
+        </nav>
+    </header>
+    
+    <main>
+        <section class="form-section">
+            <h1>Meeting Request Form</h1><br>
+            <h2>We look forward to meeting with you. </h2>
+            <p>To schedule an appointment, pick a time that works for you and share your contact information. After you submit the form, check your email for an appointment confirmation.</p>
+            
+            <form id="meeting-form">
+                <label for="date">Select a date and time *</label>
+                <input type="text" id="date-picker" name="date" required>
+                
+                <label for="time">Select a time slot *</label>
+                <select id="time-slot" name="time" required>
+                    <option value="">Select a time slot</option>
+                </select>
+
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email address *</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone number *</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="services">Which service or services are you interested in?</label>
+                <div class="services">
+                    <input type="checkbox" id="car-rental" name="services" value="Car rental">
+                    <label for="car-rental">Car rental</label>
+                    <input type="checkbox" id="airport-transfer" name="services" value="Airport transfer">
+                    <label for="airport-transfer">Airport transfer</label>
+                    <input type="checkbox" id="chauffeur-service" name="services" value="Chauffeur service">
+                    <label for="chauffeur-service">Chauffeur service</label>
+                    <input type="checkbox" id="long-term-rental" name="services" value="Long-Term rental">
+                    <label for="long-term-rental">Long-Term rental</label>
+                    <input type="checkbox" id="event-transportation" name="services" value="Event transportation">
+                    <label for="event-transportation">Event transportation</label>
+                    <input type="checkbox" id="self-drive" name="services" value="Self-Drive adventures">
+                    <label for="self-drive">Self-Drive adventures</label>
+                </div>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer><br>
+        <ul>
+            <li><a href="index2.html#services">Services</a></li>
+            <li><a href="index2.html#appointment">Schedule Appointment</a></li>
+            <li><a href="index2.html#intake">Complete Intake</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="index2.html#contact">Contact</a></li>
+        </ul>
+        <br><p>Web design by CAREN</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
+    <script src="reserve.js"></script>
+</body>
+</html>

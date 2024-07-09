@@ -1,0 +1,246 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: rgba(15, 40, 30, 1); /* Solid background color */
+    padding: 10px 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0; /* Ensure the header stays at the top */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: 900;
+    color: white;
+    padding: 10px 10px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin: 0 10px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.contact-button {
+    background-color: white;
+    color: #0f281e;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 50px;
+    background-color: #0f281e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    clear: both;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul li {
+    margin: 0 10px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Existing Styles in acc.css */
+@charset "utf-8";
+body >  img{
+    display: block;
+    top: 2px;
+    left: 0px;
+    width: 25%;
+    float: left;
+}
+ 
+html {
+    background-size: cover;
+    background-color: thistle;
+    background-image: url(https://static.vecteezy.com/system/resources/previews/020/947/515/original/rent-a-vehicle-dark-seamless-background-car-rental-pattern-vector.jpg) ;
+}
+ 
+body {
+    margin: 0px auto;
+    width: 100%;
+}
+ 
+.tittle {
+    text-align: center ;
+    width: 100%;
+    font-family: 'Courier New', monospace, 900;
+}
+
+::placeholder {
+    font-size: 15px;
+    color: black;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+}
+
+.hero {
+    height: 100% ;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0,0.4)),url(background.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    padding-top: 80px; /* Add padding to avoid overlap with navbar */
+}
+
+.form {
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
+    background: rgba(146, 142, 142, 0.9);
+    padding: 5px;
+    overflow: hidden;
+    border-radius: 0px 15px 0px 15px;
+}
+
+.button {
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px rgb(202, 198, 198);
+    border-radius: 30px;
+}
+
+.toggle {
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+
+#btn {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right , rgba(192, 178, 178, 0.63),rgba(182, 175, 175, 0.801));
+    border-radius: 30px;
+    transition: .5s;
+}
+
+.input {
+    top: 200px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}
+
+.field {
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1px solid rgb(8, 7, 7);
+    outline: none;
+    background: transparent;
+}
+
+.submit {
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right , rgba(192, 178, 178, 0.63),rgba(182, 175, 175, 0.801));
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+.checkbox {
+    margin: 30px 10px 30px 0;
+}
+
+span {
+    color: rgb(14, 13, 13);
+    font-size: 12px;
+    bottom: 68px;
+    position: absolute;
+}
+
+#IconLink {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#Icon {
+    font-size: 24px; 
+    color: #333;
+}
+
+#login {
+    left: 50px;
+}
+
+#register {
+    left: 450px;
+}
+
+.copyright {
+    text-align: center;
+    color: white;
+}
