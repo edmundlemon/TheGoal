@@ -13,7 +13,9 @@
         style="display: block; margin: 0 auto"
       />
       <h2>CAREN</h2>
-      <form id="loginForm">
+      <form id="loginForm" action="/admin/login">
+        @csrf
+        @method('POST')
         <div class="user-box">
           <input type="text" class="field" placeholder="User ID" required />
         </div>

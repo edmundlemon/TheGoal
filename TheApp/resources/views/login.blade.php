@@ -45,17 +45,26 @@
           <h1 style="font-weight: 900">CAREN</h1>
         </div>
         <!-- Login -->
-        <form id="login" class="input" method="GET">
+        <form id="login" class="input" method="POST" action="/login">
+          @csrf
+          @method('POST')
           <input
-            id="user_id"
+            id="email"
+            name="email"
             type="text"
             class="field"
-            placeholder="User ID"
+            placeholder="Email"
             ref="reference"
             required
           />
+          @error('email')
+          <p class="text-red-500 text-xs mt-1">
+              {{$message}}
+          </p>
+          @enderror
           <input
             id="password"
+            name="password"
             type="password"
             class="field"
             placeholder="Password"
@@ -68,35 +77,83 @@
         </form>
 
         <!-- Register -->
-        <form id="register" class="input">
+        <form id="register" class="input" action="/register" method="POST">
+          @csrf
+          @method('POST')
           <input
-            id="reg_user_id"
+            id="name"
+            name="name"
             type="text"
             class="field"
-            placeholder="User ID"
+            placeholder="Name"
             required
           />
+          @error('name')
+          <p class="text-red-500 text-xs mt-1">
+              {{$message}}
+          </p>
+          @enderror
           <input
             id="reg_email"
+            name="reg_email"
             type="email"
             class="field"
             placeholder="Email"
             required
           />
+          @error('email')
+          <p class="text-red-500 text-xs mt-1">
+              {{$message}}
+          </p>
+          @enderror
           <input
-            id="reg_password"
+            id="password"
+            name="password"
             type="password"
             class="field"
             placeholder="Password"
             required
           />
+          @error('password')
+          <p class="text-red-500 text-xs mt-1">
+              {{$message}}
+          </p>
+          @enderror
           <input
-            id="reg_confirmation_password"
+            id="password_confirmation"
+            name="password_confirmation"
             type="password"
             class="field"
             placeholder="Password Confirmation"
             required
           />
+          @error('password_confirmation')
+          <p class="text-red-500 text-xs mt-1">
+              {{$message}}
+          </p>
+          @enderror
+          <input
+          id="birth_date"
+          name="birth_date"
+          type="date"
+          class="field"
+          placeholder="Birthday"
+          required
+          />
+          @error('birth_date')
+          <p class="text-red-500 text-xs mt-1">
+              {{$message}}
+          </p>
+          @enderror
+          <select id="gender" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">female</option>
+          </select>
+          @error('gender')
+          <p class="text-red-500 text-xs mt-1">
+              {{$message}}
+          </p>
+          @enderror
           <!-- <input type="checkbox" class="checkbox"><span>Remember the Password</span> -->
           <button type="submit" class="submit" onclick="register_user()">Register</button>
         </form>
@@ -136,47 +193,47 @@
 
       function validateLogin(event) {}
 
-      function login_user() {
-        //userIdInput.value
-        var userIdInput = document.querySelector(
-          '.field[placeholder="User ID"]'
-        );
-        //passwordInput.value
-        var passwordInput = document.querySelector(
-          '.field[placeholder="Password"]'
-        );
+      // function login_user() {
+      //   //userIdInput.value
+      //   var userIdInput = document.querySelector(
+      //     '.field[placeholder="User ID"]'
+      //   );
+      //   //passwordInput.value
+      //   var passwordInput = document.querySelector(
+      //     '.field[placeholder="Password"]'
+      //   );
 
-        if (
-          userIdInput.value.trim() === "" ||
-          passwordInput.value.trim() === ""
-        ) {
-          alert("Please fill in all fields.");
-        } else {
-          console.log("Login Successful");
-          console.log("User ID: " + userIdInput.value);
-          console.log("Password: " + passwordInput.value);
-        }
-        event.preventDefault();
-      }
+      //   if (
+      //     userIdInput.value.trim() === "" ||
+      //     passwordInput.value.trim() === ""
+      //   ) {
+      //     alert("Please fill in all fields.");
+      //   } else {
+      //     console.log("Login Successful");
+      //     console.log("User ID: " + userIdInput.value);
+      //     console.log("Password: " + passwordInput.value);
+      //   }
+      //   event.preventDefault();
+      // }
 
-      function register_user() {
-        var userIdInput = document.getElementById("reg_user_id").value;
-        var emailInput = document.getElementById("reg_email").value;
-        var passwordInput = document.getElementById("reg_password").value;
-        var confirmationPasswordInput = document.getElementById(
-          "reg_confirmation_password"
-        ).value;
+      // function register_user() {
+      //   var userIdInput = document.getElementById("reg_user_id").value;
+      //   var emailInput = document.getElementById("reg_email").value;
+      //   var passwordInput = document.getElementById("reg_password").value;
+      //   var confirmationPasswordInput = document.getElementById(
+      //     "reg_confirmation_password"
+      //   ).value;
         
-        if (
-          userIdInput.trim() === "" ||
-          emailInput.trim() === "" ||
-          passwordInput.trim() === "" ||
-          confirmationPasswordInput.trim() === ""
-        ) {
-          alert("Please fill in all fields.");
-        } else if (passwordInput !== confirmationPasswordInput) {
-          alert("Passwords do not match.");
-        } else {
+        // if (
+        //   userIdInput.trim() === "" ||
+        //   emailInput.trim() === "" ||
+        //   passwordInput.trim() === "" ||
+        //   confirmationPasswordInput.trim() === ""
+        // ) {
+        //   alert("Please fill in all fields.");
+        // } else if (passwordInput !== confirmationPasswordInput) {
+        //   alert("Passwords do not match.");
+        // } else {
           //register logic
             // console.log("Registration Successful");
             // console.log("User ID: " + userIdInput);
@@ -184,10 +241,10 @@
             // console.log("Password: " + passwordInput);
             // console.log("Password Confirmation: " + confirmationPasswordInput);
 
-        }
+        // }
 
-        event.preventDefault();
-      }
+        // event.preventDefault();
+      // }
     </script>
   </body>
 </html>
