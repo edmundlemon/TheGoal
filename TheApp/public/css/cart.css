@@ -1,0 +1,222 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: rgba(15, 40, 30, 0.9); /* Solid background color */
+    padding: 10px 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0; /* Ensure the header stays at the top */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: 900;
+    color: white;
+    padding: 10px 10px;
+}
+
+.navbar .logo:hover{
+cursor: pointer;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin: 0 10px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.contact-button {
+    background-color: white;
+    color: #0f281e;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 100px auto 0;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.vehicle-details, .addons, .travel-insurance, .summary {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 48%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.vehicle-details {
+    display: flex;
+    align-items: center;
+}
+
+.vehicle-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.vehicle-info {
+    margin-left: 20px;
+}
+
+.vehicle-info h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.vehicle-info .specs {
+    list-style: none;
+    padding: 0;
+}
+
+.vehicle-info .specs li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.reviews {
+    margin-top: 10px;
+}
+
+.reviews span {
+    font-size: 20px;
+    color: gold;
+}
+
+.addons h2, .travel-insurance h2, .summary h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.addon-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.addon-item label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.addon-item span {
+    margin-right: 10px;
+}
+
+.travel-insurance label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.insurance-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.insurance-details div {
+    width: 48%;
+}
+
+.insurance-details h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.summary p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+footer {
+    background-color: #0f281e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+footer ul li {
+    margin: 0 10px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Social Icons in Footer */
+footer .social-icons {
+    margin: 20px 0;
+}
+
+footer .social-icons a {
+    color: white;
+    font-size: 25px;
+    margin: 0 50px;
+    text-decoration: none;
+}
+
+footer .social-icons a:hover {
+    color: #28a745;
+}
