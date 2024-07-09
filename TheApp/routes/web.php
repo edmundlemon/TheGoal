@@ -27,23 +27,25 @@ Route::get('/feedback', function () {
     return view('feedback');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+
 Route::get('/faq', function () {
     return view('faq');
 });
 
 Route::middleware(['guest'])->group(function () {
     Route::post('/register', [CustomersController::class, 'store'])->name('register');
+    Route::get('/login', function () {
+        return view('login');
+    });
     Route::post('/login', [CustomersController::class, 'authenticate'])->name('login');
+    Route::get('/admin/login', [AdminsController::class, 'login'])->name('admin.login');
     Route::post('/admin/login', [AdminsController::class, 'authenticate'])->name('admin.login');
 });
 
 Route::middleware(['auth:user|admin'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/index', function () {
+        return view('index');
+    });
 });
 
 
