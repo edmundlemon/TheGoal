@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('pickup_location');
             $table->string('return_location');
+            $table->float('total_price');
             $table->timestamps();
         });
     }

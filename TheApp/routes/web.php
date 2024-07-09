@@ -23,9 +23,11 @@ Route::middleware(['auth:user|admin'])->group(function () {
 });
 
 
-Route::middleware(['auth:customer'])->group(function () {
-    Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('admin.dashboard');
-});
+// Route::middleware(['auth:customer'])->group(function () {
+//     Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
+// });
+
+Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/edit/{car}', [CarsController::class, 'update'])->name('update.car');
