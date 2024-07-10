@@ -32,6 +32,14 @@ Route::get('/faq', function () {
     return view('faq');
 });
 
+Route::get('/401', function () {
+    return view('unauthorised');
+})->name('unauthorised');
+
+Route::get('/403', function () {
+    return view('forbidden');
+})->name('forbidden');
+
 Route::get('/addcar', [CarsController::class, 'create'])->name('add.car');
 Route::post('/addcar', [CarsController::class, 'store'])->name('add.car');
 
