@@ -5,7 +5,7 @@
 <div class="flex justify-center w-full mt-32">
     <div class="w-9/12 flex flex-col items-center m-5 border p-5 rounded shadow-md">
         {{-- {"id":1,"brand":"Toyota","model":"Corolla","type":"Sedan","image":"https:\/\/via.placeholder.com\/150","price":200,"created_at":"2024-07-10T08:39:54.000000Z","updated_at":"2024-07-10T08:39:54.000000Z"} --}}
-        <h1 class="text-3xl font-bold text-gray-800">Car Info</h1>
+        <h1 class="text-3xl font-bold text-gray-800">Car Details</h1>
 
         <div class="flex flex-row items-center space-x-5">
             <div class="p-5 flex flex-row space-x-5">

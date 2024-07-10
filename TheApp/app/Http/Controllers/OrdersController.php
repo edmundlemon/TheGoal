@@ -60,6 +60,18 @@ class OrdersController extends Controller
             ->with('success', 'Order created successfully.');
     }
 
+    public function destroy(Order $order)
+    {
+        if (auth('customer')->user()->id == $order->customer_id) {
+            $order->delete();
+        }
+        else {
+            return (403);
+        }
+        return redirect()->route('customer.orders')
+            ->with('success', 'Order deleted successfully.');
+    }
+
     public function showPending()
     {
         $pendingPaymentOrders = Order::where('status', 'Pending Approval')->get();
@@ -100,5 +112,17 @@ class OrdersController extends Controller
     public function orderDetail(Order $order)
     {
         return view('orders.detail', compact('order'));
+    }
+
+    public function show(Order $order)
+    {
+        $startDate = Carbon::parse($order->pickup_date);
+        $endDate = Carbon::parse($order->return_date);
+        $days = $startDate->diffInDays($endDate);
+        return view('view-order', [
+            'order' => Order::find($order->id),
+            'days' => $days,
+        ]
+    );
     }
 }

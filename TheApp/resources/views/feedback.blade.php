@@ -13,22 +13,18 @@
             <h2>Our Happy Customers</h2>
             <div class="feedback-list">
                 <!-- Sample feedback items -->
-                <div class="feedback-item">
-                    <img src="https://th.bing.com/th/id/OIP.HukOvx2AX47qNqZ8F0pXlwHaFF?w=800&h=550&rs=1&pid=ImgDetMain" alt="Customer Image">
-                    <div class="feedback-content">
-                        <h3>Great service. Will definitely book with them again.</h3>
-                        <p>Kua Hock Meng</p>
-                        <p>★★★★★</p>
+                @foreach ($feedbacks as $feedback)
+                    <div class="feedback-item">
+                        <img src="https://th.bing.com/th/id/OIP.HukOvx2AX47qNqZ8F0pXlwHaFF?w=800&h=550&rs=1&pid=ImgDetMain"
+                            alt="Customer Image">
+                        <div class="feedback-content">
+                            <h3>{{ $feedback->message }}</h3>
+                            <p>{{ $feedback->name }}</p>
+                            <p>★★★★★</p>
+                        </div>
                     </div>
-                </div>
-                <div class="feedback-item">
-                    <img src="https://th.bing.com/th/id/R.7ce13a051255d1d1975d26671798c289?rik=avFHXujPkQe2%2bA&riu=http%3a%2f%2fwww.theabaddiley.com%2fwp-content%2fuploads%2f2018%2f01%2fHarrods-Social_sh06_0453c_R_.jpg&ehk=CRrLXLFqr2pDK8u4BHGOI15rJ2GuWSXsMWt8tQbh0es%3d&risl=&pid=ImgRaw&r=0" alt="Customer Image">
-                    <div class="feedback-content">
-                        <h3>Extremely efficient and very professional. Highly recommended. Thx</h3>
-                        <p>Miss Valerie Mogila</p>
-                        <p>★★★★★</p>
-                    </div>
-                </div>
+
+
                 <!-- Add more feedback items as needed -->
             </div>
         </div>
@@ -50,7 +46,7 @@
                 </div> --}}
                 <div class="form-group">
                     <label for="rating">Rating:</label>
-                    <select id="rating" name="rating" required>
+                    <select id="rating" name="rating" class=" text-black" required>
                         <option value="5">★★★★★</option>
                         <option value="4">★★★★</option>
                         <option value="3">★★★</option>
@@ -60,12 +56,267 @@
                 </div>
                 <div class="form-group">
                     <label for="message">Feedback:</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <textarea id="message" name="message" rows="4" class="text-black" required></textarea>
                 </div>
                 <button type="submit">Submit Feedback</button>
             </form>
         </div>
     </section>
-@endsection
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        body {
+            background: url('https://wallpapercave.com/wp/wp5055258.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: rgba(15, 40, 30, 0.9);
+            /* Solid background color */
+            padding: 10px 10px;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            top: 0;
+            /* Ensure the header stays at the top */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+            padding: 10px 10px;
+        }
+
+        .navbar .logo:hover {
+            cursor: pointer;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            margin: 0 10px;
+        }
+
+        .menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .contact-button {
+            background-color: white;
+            color: #0f281e;
+            font-weight: 700;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .feedback-hero {
+            text-align: center;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 100px 20px;
+            margin-top: 60px;
+        }
+
+        .feedback-hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        .feedback-hero p {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .feedback-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 50px 20px;
+            color: #fcfafa;
+        }
+
+        .feedback-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .feedback-container h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .feedback-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feedback-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+
+        .feedback-content h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .feedback-content p {
+            font-size: 16px;
+        }
+
+        .feedback-form-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 50px 20px;
+            color: #fcfafa;
+        }
+
+        .feedback-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .feedback-form-container h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #feedback-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: #0f281e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        footer ul li {
+            margin: 0 10px;
+        }
+
+        footer ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+
+        .social-icons a:hover {
+            color: #ddd;
+        }
+
+        /* Social Icons in Footer */
+        footer .social-icons {
+            margin: 20px 0;
+        }
+
+        footer .social-icons a {
+            color: white;
+            font-size: 25px;
+            margin: 0 50px;
+            text-decoration: none;
+        }
+
+        footer .social-icons a:hover {
+            color: #28a745;
+        }
+    </style>
+
+@endsection
