@@ -106,7 +106,7 @@ class CarsController extends Controller
         if (auth('admin')->user()) {
             $car->delete();
         } else {
-            return (403);
+            return redirect('forbidden');
         }
         // $car->delete();
         return redirect('/view-all-cars')->with('success', 'Car has been deleted successfully!');

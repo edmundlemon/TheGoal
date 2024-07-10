@@ -62,10 +62,10 @@ class OrdersController extends Controller
 
     public function update(Request $request, Order $order){
         if (auth('customer')->user()->id != $order->customer_id) {
-            return (403);
+            return redirect('forbidden');
         }
         elseif ($order->status != 'Pending Payment') {
-            return (403);
+            return redirect('forbidden');
         }
         $request->validate([
             'pickup_date' => 'required|after:today',
@@ -100,10 +100,10 @@ class OrdersController extends Controller
     public function destroy(Order $order)
     {
         if (auth('customer')->user()->id != $order->customer_id) {
-            return (403);
+            return redirect('forbidden');
         }
         elseif ($order->status != 'Pending Payment') {
-            return (403);
+            return redirect('forbidden');
         }
         $order->delete();
         return redirect()->route('index')
@@ -117,7 +117,7 @@ class OrdersController extends Controller
             $order->save();
         }
         else {
-            return (403);
+            return redirect('forbidden');
         }
         return redirect()->route('pending.orders')
             ->with('success', 'Order approved successfully.');
@@ -130,7 +130,7 @@ class OrdersController extends Controller
             $order->save();
         }
         else {
-            return (403);
+            return redirect('forbidden');
         }
         $payment = Payment::where('order_id', $order->id)->first();
         $payment->delete();
