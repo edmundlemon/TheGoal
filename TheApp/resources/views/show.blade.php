@@ -2,6 +2,8 @@
 @include('header')
 
 @section('title', 'Book')
+{{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <div class="flex justify-center w-full mt-32">
     <div class="w-9/12 flex flex-col items-center m-5 border p-5 rounded shadow-md">
@@ -28,7 +30,7 @@
             <div class="flex flex-row space-x-5">
                 <div class="flex flex-col">
                     <label for="pickup_date" class="text-gray-600">Pickup Date</label>
-                    <input type="date" name="pickup_date" class="border border-gray-300 rounded-md p-2 mt-1 w-72"
+                    <input type="date" name="pickup_date" id="pickup_date" class="border border-gray-300 rounded-md p-2 mt-1 w-72" value="{{ old('pickup_date') }}"
                         min="{{ date('Y-m-d') }}">
                     @error('pickup_date')
                         <p class="text-red-500 text-xs mt-1">
@@ -39,7 +41,7 @@
 
                 <div class="flex flex-col">
                     <label for="return_date" class="text-gray-600">Return Date</label>
-                    <input type="date" name="return_date" class="border border-gray-300 rounded-md p-2 mt-1 w-72"
+                    <input type="date" name="return_date" id="return_date" class="border border-gray-300 rounded-md p-2 mt-1 w-72" value="{{ old('return_date') }}"
                         min="{{ date('Y-m-d') }}">
                     @error('return_date')
                         <p class="text-red-500 text-xs mt-1">
@@ -87,6 +89,15 @@
                         </p>
                     @enderror
                 </div>
+                <div class="flex flex-col">
+                    {{-- <label for="total_price">Total Price:</label>
+                    <input type="text" id="total_price" name="total_price" readonly> --}}
+                    <label for="total_price">Total Price :</label>
+                    <!-- Use a span to display the total price -->
+                    <div>
+                        RM <span id="total_price" class="text-l">0.00</span>
+                    </div>
+                </div>
             </div>
             <div class="flex justify-center mt-5">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Make
@@ -96,3 +107,28 @@
         </form>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        function calculateTotalPrice() {
+            var pickupDate = new Date($('#pickup_date').val());
+            var returnDate = new Date($('#return_date').val());
+            var price = parseFloat({{ $car->price }});
+
+            if (pickupDate && returnDate && !isNaN(price)) {
+                var timeDifference = returnDate.getTime() - pickupDate.getTime();
+                var dayDifference = timeDifference / (1000 * 3600 * 24); // Convert time difference to days
+
+                if (dayDifference >= 0) {
+                    var totalPrice = dayDifference * price;
+                    $('#total_price').text(totalPrice.toFixed(2)); // Display total price
+                } else {
+                    totalPrice = 0;
+                    $('#total_price').text(totalPrice.toFixed(2));
+                }
+            }
+        }
+
+        // Trigger calculation on input change
+        $('#pickup_date, #return_date, #price').on('change', calculateTotalPrice);
+    });
+</script>
