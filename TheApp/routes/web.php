@@ -19,12 +19,12 @@ Route::get('/about', function () {
     return view('about');
 });
 
-
 Route::get('/menu', [CarsController::class, 'index'])->name('menu');
+
 Route::get('/show/{id}', [CarsController::class, 'show'])->name('show');
 
-Route::get('/reservation', function () {
-    return view('reservation');
+Route::get('/inquiries', function () {
+    return view('inquiries');
 });
 Route::post('/inquiries', [InquiriesController::class, 'store'])->name('inquiries.store');
 

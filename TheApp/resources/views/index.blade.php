@@ -11,36 +11,12 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-    @if (session('success'))
-    <div id="flash-message" class="flash-card flash-success">
-        {{ session('success') }}
-    </div>
-@endif
-    <header>
-        <nav class="navbar">
-            &nbsp;<div class="logo" onclick="window.location.href='/'">CAREN</div>
-            <ul class="menu" id="navbar-menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/menu">Menu</a></li>
-                <li><a href="/reservation">Reservation</a></li>
-            </ul>
-            <button class="contact-button" onclick="window.location.href='/login'">Login</button>&nbsp;
-        </nav>
-    </header>
-
-    <div class="hero" id="hero">
-        <h1>CAREN</h1>
-        <p>Your Ultimate Car Rental Experience</p>
-=======
     @include('header')
     <div class="hero" id="hero"
     style="background-image: url('{{ asset('images/carimage/Car-Hire-bg.jpg') }}');"
     >
         <h1 class="text-white">CAREN</h1>
         <p  class="text-black">Your Ultimate Car Rental Experience</p>
->>>>>>> a921825db2754154c175de4804f98d2256a356f6
         <a href="/menu" class="cta-button">View Services</a>
     </div>
 
@@ -126,26 +102,7 @@
         </div>
     </section>
 
-<<<<<<< HEAD
-    <footer><br>
-        <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        <ul>
-            <li><a href="index2.html#services">Services</a></li>
-            <li><a href="reserve.html">Schedule Appointment</a></li>
-            <li><a href="/customer/feedback">Feedback</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="index2.html#contact">Contact</a></li>
-        </ul>
-        <br><br>
-        <p>&copy; 2024 CAREN. All Rights Reserved. Terms & Conditions</p>
-    </footer>
-=======
     @include('footer')
->>>>>>> a921825db2754154c175de4804f98d2256a356f6
 </body>
 <style>
     .flash-card {

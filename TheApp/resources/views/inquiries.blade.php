@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,28 +12,31 @@
     {{-- @vite('resources/css/app.css') --}}
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
-@include('header')
-    
+    @include('header')
+
     <main>
         <section class="form-section">
             <h1>Meeting Request Form</h1><br>
             <h2>We look forward to meeting with you. </h2>
-            <p>To schedule an appointment, pick a time that works for you and share your contact information. After you submit the form, check your email for an appointment confirmation.</p>
+            <p>To schedule an appointment, pick a time that works for you and share your contact information. After you
+                submit the form, check your email for an appointment confirmation.</p>
             <form id="meeting-form" action="/inquiries" method="POST">
                 @csrf
                 @method('POST')
                 <label for="date">Select a date and time *</label>
                 <input type="date" id="date-picker" name="date" value="{{ old('date') }}" required>
                 @error('date')
-                <p class="text-red-500 text-xs mt-1">
-                    {{$message}}
-                </p>
+                    <p class="text-red-500 text-xs mt-1">
+                        {{ $message }}
+                    </p>
                 @enderror
 
-                
+
                 <label for="time">Select a time slot *</label>
-                <select id="time-slot" name="time" value="{{ old('time') }}" required>
+                <select class="h-12 border border-gray-300 rounded-md pl-2" id="time-slot" name="time"
+                    value="{{ old('time') }}" required>
                     <option value="" disabled selected>Select a time slot</option>
                     <option value="09:00">9:00 AM</option>
                     <option value="10:00">10:00 AM</option>
@@ -45,33 +49,33 @@
                     <option value="17:00">5:00 PM</option>
                 </select>
                 @error('time')
-                <p class="text-red-500 text-xs mt-1">
-                    {{$message}}
-                </p>
+                    <p class="text-red-500 text-xs mt-1">
+                        {{ $message }}
+                    </p>
                 @enderror
 
                 <label for="name">Name *</label>
                 <input type="text" id="name" name="name" value="{{ old('name') }}" required>
                 @error('name')
-                <p class="text-red-500 text-xs mt-1">
-                    {{$message}}
-                </p>
+                    <p class="text-red-500 text-xs mt-1">
+                        {{ $message }}
+                    </p>
                 @enderror
 
                 <label for="email">Email address *</label>
                 <input type="email" id="email" name="email" required>
                 @error('email')
-                <p class="text-red-500 text-xs mt-1">
-                    {{$message}}
-                </p>
+                    <p class="text-red-500 text-xs mt-1">
+                        {{ $message }}
+                    </p>
                 @enderror
 
                 <label for="phone">Phone number *</label>
                 <input type="tel" id="phone" name="phone" value="{{ old('phone') }}"required>
                 @error('phone')
-                <p class="text-red-500 text-xs mt-1">
-                    {{$message}}
-                </p>
+                    <p class="text-red-500 text-xs mt-1">
+                        {{ $message }}
+                    </p>
                 @enderror
 
                 <label for="services">Which service or services are you interested in?</label>
@@ -85,9 +89,9 @@
                         <option value="Self-Drive Adventures">Self-Drive Adventures</option>
                     </select>
                     @error('services')
-                    <p class="text-red-500 text-xs mt-1">
-                        {{$message}}
-                    </p>
+                        <p class="text-red-500 text-xs mt-1">
+                            {{ $message }}
+                        </p>
                     @enderror
                     {{-- <input type="checkbox" id="car-rental" name="services" value="Car rental">
                     <label for="car-rental">Car rental</label>
@@ -110,12 +114,11 @@
             </form>
         </section>
     </main>
-    
+
     @include('footer')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
-    <script>
-
-    </script>
+    <script></script>
 </body>
+
 </html>
