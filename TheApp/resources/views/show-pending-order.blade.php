@@ -37,13 +37,19 @@
                                     <span class="text-red-500">No payment statement</span>
                                 @endif
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex flex-row space-x-5">
                                 @if ($order->payment)
                                     <form action="/approve-order/{{ $order->id }}" method="POST">
                                         @csrf
                                         @method('POST')
                                         <button type="submit"
                                             class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Approve</button>
+                                    </form>
+                                    <form action="/reject-order/{{ $order->id }}" method="POST">
+                                        @csrf
+                                        @method('POST')
+                                        <button type="submit"
+                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Reject</button>
                                     </form>
                                 @endif
                             </td>
