@@ -14,10 +14,6 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/services', function () {
-    return view('services');
-});
-
 Route::get('/menu', function () {
     return view('menu');
 });
@@ -26,8 +22,8 @@ Route::get('/reservation', function () {
     return view('reservation');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
+Route::get('/admin-login', function () {
+    return view('admin-login');
 });
 
 Route::get('/feedback', function () {

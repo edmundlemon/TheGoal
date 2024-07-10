@@ -10,28 +10,11 @@
     />
   </head>
   <body>
-    <header>
-      <nav class="navbar">
-        &nbsp;
-        <div class="logo" onclick="window.location.href='/'">CAREN</div>
-        <ul class="menu" id="navbar-menu">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/menu">Menu</a></li>
-            <li><a href="/reservation">Reservation</a></li>
-        </ul>
-        <button
-          class="contact-button"
-          onclick="window.location.href='/login'"
-        >
-          Login</button
-        >&nbsp;
-      </nav>
-    </header>
+
 
     <div class="hero">
       <div class="form">
-        <a href="/admin-login.html" id="IconLink">
+        <a href="/admin-login" id="IconLink">
           <i class="fa fa-user" id="Icon"></i>
         </a>
         <div class="button">

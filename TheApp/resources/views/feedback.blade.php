@@ -8,18 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            &nbsp;<div class="logo" onclick="window.location.href='/'">CAREN</div>
-            <ul class="menu" id="navbar-menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/menu">Menu</a></li>
-                <li><a href="/reservation">Reservation</a></li>
-            </ul>
-            <button class="contact-button" onclick="window.location.href='/login'">Login</button>&nbsp;
-        </nav>
-    </header>
+@include('header')
 
     <div class="feedback-hero">
         <h1>Customer Feedback</h1>
@@ -83,22 +72,7 @@
         </div>
     </section>
 
-    <footer><br>
-        <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        <ul>
-            <li><a href="index2.html#services">Services</a></li>
-            <li><a href="reserve.html">Schedule Appointment</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="index2.html#contact">Contact</a></li>
-        </ul>
-        <br><br>
-        <p>&copy; 2024 CAREN. All Rights Reserved. Terms & Conditions</p>
-    </footer>
+@include('footer')
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
