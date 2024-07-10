@@ -16,7 +16,14 @@ class OrdersController extends Controller
 
     public function index()
     {
-        return view('orders.index');
+        $pendingPaymentOrders = Order::where('status', 'Pending Payment')->get();
+        $approvedOrders = Order::where('status', 'Approved')->get();
+        $rejectedOrders = Order::where('status', 'Rejected')->get();
+        return view('orders-index', [
+            'pendingPaymentOrders' => $pendingPaymentOrders,
+            'approvedOrders' => $approvedOrders,
+            'rejectedOrders' => $rejectedOrders
+        ]);
     }
 
     public function store(Request $request, Customer $customer)
@@ -73,6 +80,21 @@ class OrdersController extends Controller
         }
         return redirect()->route('pending.orders')
             ->with('success', 'Order approved successfully.');
+    }
+
+    public function rejectOrder(Order $order)
+    {
+        if (auth('admin')->user()) {
+            $order->status = 'Rejected';
+            $order->save();
+        }
+        else {
+            return (403);
+        }
+        $payment = Payment::where('order_id', $order->id)->first();
+        $payment->delete();
+        return redirect()->route('pending.orders')
+            ->with('success', 'Order rejected successfully.');
     }
 
     public function orderDetail(Order $order)

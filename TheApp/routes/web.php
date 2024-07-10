@@ -67,6 +67,7 @@ Route::middleware(['auth:customer'])->group(function () {
     Route::post('/upload-payment-receipt/{order}', [PaymentsController::class, 'store'])->name('payment.receipt');
     Route::get('/customer/feedback', [FeedbacksController::class, 'index'])->name('customer.feedback');
     Route::post('/customer/feedback', [FeedbacksController::class, 'store'])->name('customer.feedback');
+    Route::get('/customer/orders', [OrdersController::class, 'index'])->name('customer.orders');
 });
 
 
@@ -78,4 +79,5 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/logout', [AdminsController::class, 'logout'])->name('admin.logout');
     Route::post('/approve-order/{order}', [OrdersController::class, 'approveOrder'])->name('approve.order');
     Route::get('/pending-orders', [OrdersController::class, 'showPending'])->name('pending.orders');
+    Route::get('/view-inquiries', [InquiriesController::class, 'index'])->name('view.inquiries');
 });
