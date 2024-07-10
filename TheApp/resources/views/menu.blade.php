@@ -88,39 +88,38 @@
             </div>
             <div class="car-list">
                 <!-- Car Display Card -->
-                
-                {{-- @foreach ($cars as $car)
-                    {
+                @foreach ($cars as $car)
+                    {{-- { --}}
                     <div class="car-item" data-category="{{ $car->category }}">
                         <div class="image-container">
-                            <img src="{{ $car->image }}" alt="{{ $car->name }}">
+                            <img src="{{ asset($car->image) }}" alt="{{ $car->name }}">
                         </div>
-                        <h3>{{ $car->name }}</h3>
+                        <h3>{{ $car->brand }} {{$car->model}}</h3>
                         <div class="car-features">
-                            <div class="feature-item">
+                            {{-- <div class="feature-item">
                                 <img src="C:\Users\Gigabyte\Documents\FYP\carimage\sedan-car-front.png"
                                     alt="Car Icon">
                                 <span>{{ $car->category }}</span>
-                            </div>
+                            </div> --}}
                             <div class="feature-item">
-                                <img src="C:\Users\Gigabyte\Documents\FYP\carimage\fuel.png" alt="Gasoline Icon">
+                            <img src="{{asset('images/carimage/fuel.png')}}" alt="Gasoline Icon">
                                 <span>{{ $car->type }}</span>
                             </div>
-                            <div class="feature-item">
+                            {{-- <div class="feature-item">
                                 <img src="C:\Users\Gigabyte\Documents\FYP\carimage\seat-belt.png" alt="Seats Icon">
                                 <span>{{ $car->seats + ' Seats' }}</span>
                             </div>
                             <div class="feature-item">
                                 <img src="C:\Users\Gigabyte\Documents\FYP\carimage\gear-shift.png"
                                     alt="Automatic Icon">
-                                <span>{{ $car->transmission }}</span>
+                                <span>{{ $car->transmission }}</span> --}}
                             </div>
                         </div>
-                        <p>{{ 'From MYR ' + $car->price }} </p>
+                        <p> From MYR : {{ $car->price }} </p>
                         <button onclick="function($car->id)">Book Now</button>
                     </div>
-                    } --}}
-
+                    {{-- } --}}
+                @endforeach
             </div>
         </section>
     </main>

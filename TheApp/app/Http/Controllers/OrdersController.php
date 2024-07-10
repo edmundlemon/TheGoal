@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use auth;
+use Carbon\Carbon;
 use App\Models\Car;
 use App\Models\Order;
 use App\Models\Payment;
@@ -18,7 +19,7 @@ class OrdersController extends Controller
         return view('orders.index');
     }
 
-    public function store(Request $request, Customer $customer, Car $car, Payment $payment)
+    public function store(Request $request, Customer $customer)
     {
         $request->validate([
             'car_id' => 'required',
@@ -29,12 +30,20 @@ class OrdersController extends Controller
             'return_location' => 'required',
         ]);
 
+        $startDate = Carbon::parse($request->pickup_date);
+        $endDate = Carbon::parse($request->return_date);
+        $days = $startDate->diffInDays($endDate);
+        $car = Car::find($request->car_id);
+        $total_price = $days * $car->price;
         $order = new Order();
         $order->car_id = $request->car_id;
         $order->customer_id = $request->customer_id;
         $order->order_date = $request->order_date;
         $order->delivery_date = $request->delivery_date;
         $order->status = 'Pending Payment';
+        $order->pickup_location = $request->pickup_location;
+        $order->return_location = $request->return_location;
+        $order->total_price = $total_price;
         $order->save();
 
         return redirect()->route('orders.index')
