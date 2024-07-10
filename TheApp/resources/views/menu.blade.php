@@ -5,141 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rent A Car in Malaysia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('css/menu.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            &nbsp;<div class="logo" onclick="window.location.href='/'">CAREN</div>
-            <ul class="menu" id="navbar-menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/menu">Menu</a></li>
-                <li><a href="/reservation">Reservation</a></li>
-            </ul>
-            <button class="contact-button" onclick="window.location.href='/login'">Login</button>&nbsp;
-        </nav>
-    </header>
-    <div class="hero-section" id="home">
+    @include('header')
+    <div class="hero-section h-[50vh] mt-[10vh]" id="home">
         <div class="background-image image1"></div>
         <div class="background-image image2"></div>
         <div class="background-image image3"></div>
-        <div class="form-container">
-            <div class="form-tabs">
-                <button class="form-tab active" id="car-tab">Car</button>
-                <button class="form-tab" id="chauffeur-tab">Chauffeur</button>
-            </div>
-            <form id="car-rental-form" class="rental-form active">
-                <div class="form-group">
-                    <label for="pickup-location">Pick-up Location</label>
-                    <input type="text" id="pickup-location" name="pickup-location" placeholder="Pick-up Location">
-                </div>
-                <div class="form-group">
-                    <label for="pickup-date">Pick-up date</label>
-                    <input type="date" id="pickup-date" name="pickup-date">
-                    <input type="time" id="pickup-time" name="pickup-time" value="09:00">
-                </div>
-                <div class="form-group">
-                    <label for="return-date">Return date</label>
-                    <input type="date" id="return-date" name="return-date">
-                    <input type="time" id="return-time" name="return-time" value="09:00">
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" id="return-different-location" name="return-different-location">
-                    <label for="return-different-location">Return to another location</label>
-                </div>
-                <div class="form-group" id="return-location-group" style="display: none;">
-                    <input type="text" id="return-location" name="return-location" placeholder="Return Location">
-                </div>
-                <button type="submit">Search</button>
-            </form>
-            <form id="chauffeur-rental-form" class="rental-form">
-                <div class="form-group">
-                    <label for="pickup-location-chauffeur">Pick-up Location</label>
-                    <input type="text" id="pickup-location-chauffeur" name="pickup-location-chauffeur"
-                        placeholder="Pick-up Location">
-                </div>
-                <div class="form-group">
-                    <label for="dropoff-location-chauffeur">Drop-off Location</label>
-                    <input type="text" id="dropoff-location-chauffeur" name="dropoff-location-chauffeur"
-                        placeholder="Drop-off Location">
-                </div>
-                <div class="form-group">
-                    <label for="pickup-date-chauffeur">Pick-up date</label>
-                    <input type="date" id="pickup-date-chauffeur" name="pickup-date-chauffeur">
-                    <input type="time" id="pickup-time-chauffeur" name="pickup-time-chauffeur" value="09:00">
-                </div>
-                <button type="submit">Search</button>
-            </form>
-        </div>
     </div>
 
     <main>
         <section class="car-models" id="menu">
             <h2>Our Car Models</h2>
             <div class="car-categories">
-                <button class="category-btn active" data-category="all">All</button>
-                <button class="category-btn" data-category="compact">Compact</button>
-                <button class="category-btn" data-category="sedan">Sedan</button>
-                <button class="category-btn" data-category="mpv">MPV</button>
-                <button class="category-btn" data-category="suv">SUV</button>
+                <button class="category-btn active" data-category="All">All</button>
+                <button class="category-btn" data-category="Compact">Compact</button>
+                <button class="category-btn" data-category="Sedan">Sedan</button>
+                <button class="category-btn" data-category="Mpv">MPV</button>
+                <button class="category-btn" data-category="Suv">SUV</button>
             </div>
             <div class="car-list">
-                <!-- Car Display Card -->
                 @foreach ($cars as $car)
-                    {{-- { --}}
-                    <div class="car-item" data-category="{{ $car->category }}">
+                    <div class="car-item" data-category="{{ $car->type }}">
                         <div class="image-container">
                             <img src="{{ asset($car->image) }}" alt="{{ $car->name }}">
                         </div>
-                        <h3>{{ $car->brand }} {{$car->model}}</h3>
+                        <h3>{{ $car->brand }} {{ $car->model }}</h3>
                         <div class="car-features">
-                            {{-- <div class="feature-item">
-                                <img src="C:\Users\Gigabyte\Documents\FYP\carimage\sedan-car-front.png"
-                                    alt="Car Icon">
-                                <span>{{ $car->category }}</span>
-                            </div> --}}
                             <div class="feature-item">
-                            <img src="{{asset('images/carimage/fuel.png')}}" alt="Gasoline Icon">
+                                <img src="{{ asset('images/carimage/sedan-car-front.png') }}" alt="Gasoline Icon">
                                 <span>{{ $car->type }}</span>
-                            </div>
-                            {{-- <div class="feature-item">
-                                <img src="C:\Users\Gigabyte\Documents\FYP\carimage\seat-belt.png" alt="Seats Icon">
-                                <span>{{ $car->seats + ' Seats' }}</span>
-                            </div>
-                            <div class="feature-item">
-                                <img src="C:\Users\Gigabyte\Documents\FYP\carimage\gear-shift.png"
-                                    alt="Automatic Icon">
-                                <span>{{ $car->transmission }}</span> --}}
                             </div>
                         </div>
                         <p> From MYR : {{ $car->price }} </p>
-                        <button onclick="function($car->id)">Book Now</button>
+                        <div class="w-full flex justify-center">
+                            <a class="bg-blue-500 text-white w-24 rounded-lg whitespace-nowrap py-2"
+                                href="{{ route('show', $car->id) }}">Show Details
+                            </a>
+                        </div>
                     </div>
-                    {{-- } --}}
                 @endforeach
             </div>
         </section>
     </main>
 
-    <footer><br>
-        <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        <ul>
-
-            <li><a href="/reservation">Schedule Appointment</a></li>
-            <li><a href="/feedback">Feedback</a></li>
-            <li><a href="/faq">FAQ</a></li>
-
-        </ul>
-        <br><br>
-        <p>&copy; 2024 CAREN. All Rights Reserved. Terms & Conditions</p>
-    </footer>
+    @include('footer')
 
     <script src="menu.js"></script>
     <script>
@@ -229,6 +143,29 @@
                     } else {
                         item.style.display = 'none';
                     }
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const carItems = document.querySelectorAll('.car-item');
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.getAttribute('data-category');
+
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    carItems.forEach(item => {
+                        if (category === 'All' || item.getAttribute('data-category') ===
+                            category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
                 });
             });
         });

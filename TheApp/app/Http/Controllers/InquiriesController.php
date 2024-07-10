@@ -11,6 +11,7 @@ class InquiriesController extends Controller
 
     public function store(Request $request)
     {
+
         $customMessages = [
             'phone.regex' => 'Only valid phone numbers are allowed',
         ];
@@ -24,8 +25,6 @@ class InquiriesController extends Controller
             // 'message' => 'required',
             // 'consent' => 'required'
         ], $customMessages);
-
-        dd($request->all());
         $inquiry = new Inquiries();
         $inquiry->name = $request->name;
         $inquiry->email = $request->email;
