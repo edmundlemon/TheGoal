@@ -18,7 +18,13 @@
         </div>
         <div>
             <label for="type" class="block text-sm font-medium text-gray-700">Type:</label>
-            <input type="text" id="type" name="type" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+            {{-- <input type="text" id="type" name="type" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required> --}}
+            <select name="type" id="type">
+                <option value="Compact">Compact</option>
+                <option value="Sedan">Sedan</option>
+                <option value="MPV">MPV</option>
+                <option value="SUV">SUV</option>
+            </select>
         </div>
         <div>
             <label for="price" class="block text-sm font-medium text-gray-700">Price:</label>
