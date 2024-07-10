@@ -3,6 +3,10 @@
 @section('title', 'View All Cars')
 
 @section('content')
+
+<br><br><br><br><br>
+
+
 <div class="flex flex-col">
 	<h1 class="text-2xl font-bold mb-4">View All Cars</h1>
 	<div class="flex flex-col">
