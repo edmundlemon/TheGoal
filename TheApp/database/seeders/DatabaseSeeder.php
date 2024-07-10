@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\Car;
 use App\Models\Customer;
 use App\Models\Order;
@@ -29,6 +30,12 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'birth_date' => '1990-01-01',
             'gender' => 'Male',
+        ]);
+        Admin::create([
+            // 'id' => 1,
+            'name' => 'Admin 1',
+            'email' => 'hello@gmail.com',
+            'password' => bcrypt('password'),
         ]);
         Car::create([
             // 'name' => 'Test Car',

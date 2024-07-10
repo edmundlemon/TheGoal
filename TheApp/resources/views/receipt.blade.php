@@ -1,5 +1,4 @@
 <!-- resources/views/receipt.blade.php -->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +32,9 @@
         }
         .text-red {
             color: red;
+        }
+        .bold {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -81,7 +83,12 @@
                     <td>Car Type</td>
                     <td>{{ $car_type }}</td>
                 </tr>
+                <tr>
+                    <td class="bold">Total Price</td>
+                    <td class="bold">RM {{ $total_price }}</td>
+                </tr>
             </table>
+            <h3 class="header">Thank you for using our service.</h3>
         </div>
         <div class="footer text-red">
             <p class="text-red-500">Car pickup time is after 12:00 on the pickup date</p>

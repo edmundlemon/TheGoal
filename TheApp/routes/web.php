@@ -5,6 +5,7 @@ use App\Http\Controllers\CarsController;
 use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\CustomersController;
+use App\Models\Car;
 
 Route::get('/', function () {
     return view('index');
@@ -15,9 +16,7 @@ Route::get('/about', function () {
 });
 
 
-Route::get('/menu', function () {
-    return view('menu');
-});
+Route::get('/menu', [CarsController::class, 'index'])->name('menu');
 
 Route::get('/reservation', function () {
     return view('reservation');
@@ -32,6 +31,9 @@ Route::get('/faq', function () {
     return view('faq');
 });
 
+Route::get('/addcar', [CarsController::class, 'create'])->name('add.car');
+Route::post('/addcar', [CarsController::class, 'store'])->name('add.car');
+
 Route::middleware(['guest'])->group(function () {
     Route::post('/register', [CustomersController::class, 'store'])->name('register');
     Route::get('/login', function () {
@@ -42,19 +44,23 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/admin/login', [AdminsController::class, 'authenticate'])->name('admin.login');
 });
 
-Route::middleware(['auth:user|admin'])->group(function () {
+Route::middleware(['auth:customer,admin'])->group(function () {
     Route::get('/index', function () {
         return view('index');
     });
 });
 
 
-// Route::middleware(['auth:customer'])->group(function () {
-//     Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
-// });
+Route::middleware(['auth:customer'])->group(function () {
+    Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
+    Route::get('/logout', [CustomersController::class, 'logout'])->name('logout');
+});
 
-Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
-
+Route::get('/view-all-cars', [CarsController::class, 'adminView'])->name('view.all.cars');
 Route::middleware(['auth:admin'])->group(function () {
-    Route::get('/edit/{car}', [CarsController::class, 'update'])->name('update.car');
+    Route::get('/editcar/{car}', [CarsController::class, 'edit'])->name('edit.car');
+    Route::put('/editcar/{car}', [CarsController::class, 'update'])->name('update.car');
+    Route::get('/view-all-cars', [CarsController::class, 'adminView'])->name('view.all.cars');
+    Route::delete('/deletecar/{car}', [CarsController::class, 'destroy'])->name('delete.car');
+    Route::post('/logout', [AdminsController::class, 'logout'])->name('admin.logout');
 });
