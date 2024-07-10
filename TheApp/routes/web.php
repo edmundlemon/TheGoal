@@ -1,11 +1,15 @@
 <?php
 
+use App\Models\Car;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\AdminsController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\CustomersController;
 use App\Models\Car;
+use App\Http\Controllers\InquiriesController;
+use App\Http\Controllers\PaymentsController;
 
 Route::get('/', function () {
     return view('index');
@@ -17,17 +21,12 @@ Route::get('/about', function () {
 
 
 Route::get('/menu', [CarsController::class, 'index'])->name('menu');
-
-
 Route::get('/show/{id}', [CarsController::class, 'show'])->name('show');
 
 Route::get('/reservation', function () {
     return view('reservation');
 });
-
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::post('/inquiries', [InquiriesController::class, 'store'])->name('inquiries.store');
 
 Route::get('/feedback', function () {
     return view('feedback');
@@ -54,20 +53,25 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth:customer,admin'])->group(function () {
     Route::get('/index', function () {
         return view('index');
-    });
+    })->name('index');
 });
 
+
+Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
 
 Route::middleware(['auth:customer'])->group(function () {
-    Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
     Route::get('/logout', [CustomersController::class, 'logout'])->name('logout');
+    Route::get('/upload-payment-receipt/{order}', [PaymentsController::class, 'show'])->name('payment.receipt');
+    Route::post('/upload-payment-receipt/{order}', [PaymentsController::class, 'store'])->name('payment.receipt');
 });
 
-Route::get('/view-all-cars', [CarsController::class, 'adminView'])->name('view.all.cars');
+
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/editcar/{car}', [CarsController::class, 'edit'])->name('edit.car');
     Route::put('/editcar/{car}', [CarsController::class, 'update'])->name('update.car');
     Route::get('/view-all-cars', [CarsController::class, 'adminView'])->name('view.all.cars');
     Route::delete('/deletecar/{car}', [CarsController::class, 'destroy'])->name('delete.car');
     Route::post('/logout', [AdminsController::class, 'logout'])->name('admin.logout');
+    Route::post('/approve-order/{order}', [OrdersController::class, 'approveOrder'])->name('approve.order');
+    Route::get('/pending-orders', [OrdersController::class, 'showPending'])->name('pending.orders');
 });

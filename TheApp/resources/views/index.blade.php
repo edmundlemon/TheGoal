@@ -12,7 +12,6 @@
 
 <body>
     @include('header')
-
     <div class="hero" id="hero"
     style="background-image: url('{{ asset('images/carimage/Car-Hire-bg.jpg') }}');"
     >

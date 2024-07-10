@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Car;
 use App\Models\Customer;
 use App\Models\Order;
+use App\Models\Payment;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -55,6 +56,30 @@ class DatabaseSeeder extends Seeder
             'return_location' => 'New York',
             'total_price' => 1000,
             'status' => 'Approved',
+        ]);
+        Order::create([
+            'customer_id' => 1,
+            'car_id' => 1,
+            'pickup_date' => '2021-12-04',
+            'return_date' => '2021-12-09',
+            'pickup_location' => 'KL',
+            'return_location' => 'KL',
+            'total_price' => 1000,
+            'status' => 'Pending Payment',
+        ]);
+        Order::create([
+            'customer_id' => 1,
+            'car_id' => 1,
+            'pickup_date' => '2021-12-12',
+            'return_date' => '2021-12-18',
+            'pickup_location' => 'KL',
+            'return_location' => 'KL',
+            'total_price' => 1000,
+            'status' => 'Pending Payment',
+        ]);
+        Payment::create([
+            'order_id' => 2,
+            'payment_statement' => 'Paid',
         ]);
         
     }

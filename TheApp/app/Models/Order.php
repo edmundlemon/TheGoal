@@ -26,6 +26,11 @@ class Order extends Model
         return $this->all();
     }
 
+    public function getPending()
+    {
+        return $this->where('status', 'Pending Payment')->get();
+    }
+
     public function getOrder($id)
     {
         return $this->find($id);
@@ -39,5 +44,10 @@ class Order extends Model
     public function car()
     {
         return $this->belongsTo(Car::class);
+    }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
     }
 }
