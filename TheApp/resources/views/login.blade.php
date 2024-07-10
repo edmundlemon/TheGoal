@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
   </head>
   <body>
     <header>
@@ -49,15 +50,15 @@
           @csrf
           @method('POST')
           <input
-            id="email"
-            name="email"
+            id="login_email"
+            name="login_email"
             type="text"
             class="field"
             placeholder="Email"
             ref="reference"
             required
           />
-          @error('email')
+          @error('login_email')
           <p class="text-red-500 text-xs mt-1">
               {{$message}}
           </p>

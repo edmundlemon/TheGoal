@@ -24,7 +24,7 @@ class Payment extends Model
         return $this->find($id);
     }
 
-    public function belongsToOrder()
+    public function order()
     {
         return $this->belongsTo(Order::class);
     }

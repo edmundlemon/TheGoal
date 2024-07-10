@@ -31,13 +31,15 @@ class CustomersController extends Controller
     }
 
     public function authenticate(Request $request){
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('password');
+        $credentials['email'] = $request['login_email'];
+        // dd($credentials);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect('/index');
         }
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'login_email' => 'The provided credentials do not match our records.',
         ]);
     }
 
