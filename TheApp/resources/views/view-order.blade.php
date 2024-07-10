@@ -11,6 +11,11 @@
         <div class="flex justify-between mb-4">
             <h2 class="text-4xl font-bold text-indigo-600">Order Details</h2>
         </div>
+        <div class="flex justify-between mb-4">
+            <h5 class="text-red-500 font-medium">
+                Upload Your Receipt below for Payment Verification
+            </h5>
+        </div>
         <div class="mb-4">
             <h5 class="text-gray-800 font-medium">Order ID: <span
                     class="text-gray-600 font-semibold">{{ $order->id }}</span></h5>
@@ -26,7 +31,7 @@
                 <p class="text-gray-800 font-medium">Car Name: <span
                         class="text-gray-600 font-semibold">{{ $order->car->brand }}
                         {{ $order->car->model }}</span></p>
-                <p class="text-gray-800 font-medium">Car Price (per month): <span
+                <p class="text-gray-800 font-medium">Car Price (per day): <span
                         class="text-gray-600 font-semibold"><b>MYR</b>
                         {{  number_format($order->car->price, 2, '.', '') }}</span></p>
             </div>
@@ -63,6 +68,23 @@
                 class="text-gray-600 font-semibold"><b>MYR </b>{{ number_format($order->total_price, 2, '.', '') }}</span></p>
             <p class="text-gray-800 font-medium">Status: <span id="status"
                     class="text-gray-600 font-semibold">{{ $order->status }}</span></p>
+        </div>
+        <div class="w-full mb-4">
+            <form action="/upload-payment-receipt/{{ $order->id }}" method="POST" 
+                class="flex flex-col w-full space-y-2"
+                enctype="multipart/form-data">
+                @csrf
+                @method('POST')
+                <input type="file" name="payment_statement" class="border rounded w-full p-2">
+                @error('payment_statement')
+                    <span class="text-red-500 text-sm">
+                        {{ $message }}
+                    </span>  
+                @enderror
+                <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Upload
+                    Receipt</button>
+            </form>
         </div>
     </div>
 

@@ -56,7 +56,7 @@ class OrdersController extends Controller
         // dd($order);
         $order->save();
 
-        return redirect()->route('index')
+        return redirect()->route('customer.order.show', $order->id)
             ->with('success', 'Order created successfully.');
     }
 
