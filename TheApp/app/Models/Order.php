@@ -18,6 +18,7 @@ class Order extends Model
         'status',
         'pickup_location',
         'return_location',
+        'total_price'
     ];
 
     public function getOrders()
@@ -30,12 +31,12 @@ class Order extends Model
         return $this->find($id);
     }
 
-    public function belongsToCustomer()
+    public function customer()
     {
         return $this->belongsTo(Customer::class);
     }
 
-    public function belongsToCar()
+    public function car()
     {
         return $this->belongsTo(Car::class);
     }

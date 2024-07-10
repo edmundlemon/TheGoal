@@ -8,11 +8,16 @@ use Illuminate\Support\Facades\Auth;
 class AdminsController extends Controller
 {
     //
+    public function login(){
+        return view('admin-login');
+    }
+
     public function authenticate(Request $request){
         $credentials = $request->only('email', 'password');
+        // dd($credentials);
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect('/view-all-cars');
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',

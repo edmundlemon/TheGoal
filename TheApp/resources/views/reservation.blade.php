@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meeting Request Form</title>
     <link rel="stylesheet" href="{{ asset('css/reserve.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    {{-- @vite('resources/css/app.css') --}}
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 @include('header')
@@ -16,7 +19,9 @@
             <h1>Meeting Request Form</h1><br>
             <h2>We look forward to meeting with you. </h2>
             <p>To schedule an appointment, pick a time that works for you and share your contact information. After you submit the form, check your email for an appointment confirmation.</p>
-            
+            <div class="bg-blue-500 text-white p-4">
+                This is a Tailwind styled div
+              </div>
             <form id="meeting-form">
                 <label for="date">Select a date and time *</label>
                 <input type="date" id="date-picker" name="date" required>
