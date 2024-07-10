@@ -10,10 +10,15 @@
             <li><a href="/inquiries">Inquiries</a></li>
         </ul>
 
-        @if (Auth::check())
+        @if (Auth::guard('customer')->check())
             <div>
                 <a href="/customer/orders" class="contact-button">Orders</a>
                 <a href="/logout" class="contact-button">Logout</a>
+            </div>
+        @elseif (Auth::guard('admin')->check())
+            <div>
+                <a href="/pending-orders" class="contact-button">Pending Orders</a>
+                <a href="/admin/logout" class="contact-button">Logout</a>
             </div>
         @else
             <a href="/login" class="contact-button">Login</a>

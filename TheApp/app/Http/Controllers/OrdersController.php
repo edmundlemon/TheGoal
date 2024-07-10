@@ -89,7 +89,7 @@ class OrdersController extends Controller
 
     public function showPending()
     {
-        $pendingPaymentOrders = Order::where('status', 'Pending Approval')->get();
+        $pendingPaymentOrders = Order::where('status', 'Pending Payment')->get();
         // dd($pendingPaymentOrders);
         return view('show-pending-order', [
             'orders' => $pendingPaymentOrders
