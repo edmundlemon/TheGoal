@@ -21,17 +21,12 @@ Route::get('/about', function () {
 
 Route::get('/menu', [CarsController::class, 'index'])->name('menu');
 
-Route::get('/show/{id}', [CarsController::class, 'show'])->name('show');
+Route::get('/car/{id}', [CarsController::class, 'show_car'])->name('car');
 
 Route::get('/inquiries', function () {
     return view('inquiries');
 });
 Route::post('/inquiries', [InquiriesController::class, 'store'])->name('inquiries.store');
-
-Route::get('/feedback', function () {
-    return view('feedback');
-});
-
 
 Route::get('/faq', function () {
     return view('faq');
@@ -76,6 +71,8 @@ Route::middleware(['auth:customer'])->group(function () {
     Route::get('/customer/feedback', [FeedbacksController::class, 'index'])->name('customer.feedback');
     Route::post('/customer/feedback', [FeedbacksController::class, 'store'])->name('customer.feedback');
     Route::get('/customer/orders', [OrdersController::class, 'index'])->name('customer.orders');
+    Route::get('/view/order/{order}', [OrdersController::class, 'show'])->name('customer.order.show');
+    Route::get('/delete/order/{order}', [OrdersController::class, 'destroy'])->name('customer.order.delete');
 });
 
 

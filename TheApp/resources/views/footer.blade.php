@@ -7,7 +7,7 @@
     <ul>
 
         <li><a href="/reservation">Schedule Appointment</a></li>
-        <li><a href="/feedback">Feedback</a></li>
+        <li><a href="/customer/feedback">Feedback</a></li>
         <li><a href="/faq">FAQ</a></li>
 
     </ul>

@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout Page</title>
-    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="cart.js" defer></script>
-</head>
-<body>
-@include('header')
+@extends('layouts.app')
 
+@section('title', 'Cart')
+
+@section('content')
     <main>
         <div class="container">
             <section class="vehicle-details">
@@ -92,7 +84,4 @@
             </section>
         </div>
     </main>
-
-    @include('footer')
-</body>
-</html>
+@endsection

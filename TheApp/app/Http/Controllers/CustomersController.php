@@ -21,13 +21,13 @@ class CustomersController extends Controller
 
         $customer = new Customer();
         $customer->name = $request->name;
-        $customer->email = $request->reg_email;
+        $customer->email = $request->email;
         $customer->password = bcrypt($request->password);
         $customer->birth_date = $request->birth_date;
         $customer->gender = $request->gender;
         $customer->save();
         $request->session()->regenerate();
-        return redirect('/index')->with('success', 'You have been registered successfully!');
+        return redirect('/login')->with('success', 'You have been registered successfully!');
     }
 
     public function authenticate(Request $request){
