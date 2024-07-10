@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Default Title')</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css">
@@ -53,17 +53,23 @@
     </style>
 </head>
 
-<body>
-    @include('header')
+<body class="">
     @if (session('success'))
         <div id="flash-message" class="flash-card flash-success">
             {{ session('success') }}
         </div>
     @endif
+
+    @if(Auth::check())
+        @include('header')
+    @endif
     <main>
         @yield('content')
+        @if(Auth::guard('customer')->check())
+        @include('footer')
+    @endif
     </main>
-    @include('footer')
+
 
 </body>
 <style>
@@ -84,10 +90,21 @@
     }
 
     @keyframes fadeInOut {
-        0% { opacity: 0; }
-        10% { opacity: 1; }
-        90% { opacity: 1; }
-        100% { opacity: 0; }
+        0% {
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 1;
+        }
+
+        90% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
     }
 </style>
 <script>
@@ -100,4 +117,5 @@
         }
     });
 </script>
+
 </html>
