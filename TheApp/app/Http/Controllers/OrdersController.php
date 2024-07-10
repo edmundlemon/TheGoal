@@ -39,16 +39,17 @@ class OrdersController extends Controller
         
         $order = new Order();
         $order->car_id = $request->car_id;
-        $order->customer_id = auth('user')->user()->id;
+        $order->customer_id = auth('customer')->user()->id;
         $order->pickup_date = $request->pickup_date;
         $order->return_date = $request->return_date;
         $order->status = 'Pending Payment';
         $order->pickup_location = $request->pickup_location;
         $order->return_location = $request->return_location;
         $order->total_price = $total_price;
+        // dd($order);
         $order->save();
 
-        return redirect()->route('orders.index')
+        return redirect()->route('index')
             ->with('success', 'Order created successfully.');
     }
 

@@ -30,12 +30,22 @@
                     <label for="pickup_date" class="text-gray-600">Pickup Date</label>
                     <input type="date" name="pickup_date" class="border border-gray-300 rounded-md p-2 mt-1 w-72"
                         min="{{ date('Y-m-d') }}">
+                    @error('pickup_date')
+                        <p class="text-red-500 text-xs mt-1">
+                        {{ $message }}
+                        </p>
+                    @enderror
                 </div>
 
                 <div class="flex flex-col">
                     <label for="return_date" class="text-gray-600">Return Date</label>
                     <input type="date" name="return_date" class="border border-gray-300 rounded-md p-2 mt-1 w-72"
                         min="{{ date('Y-m-d') }}">
+                    @error('return_date')
+                        <p class="text-red-500 text-xs mt-1">
+                        {{ $message }}
+                        </p>
+                    @enderror
                 </div>
             </div>
 
@@ -52,6 +62,11 @@
                         <option value="Melaka">Melaka</option>
                         <option value="Johor">Johor</option>
                     </select>
+                    @error('pickup_location')
+                        <p class="text-red-500 text-xs mt-1">
+                        {{ $message }}
+                        </p>
+                    @enderror
                 </div>
 
                 <div class="flex flex-col">
@@ -66,11 +81,17 @@
                         <option value="Melaka">Melaka</option>
                         <option value="Johor">Johor</option>
                     </select>
+                    @error('return_location')
+                        <p class="text-red-500 text-xs mt-1">
+                        {{ $message }}
+                        </p>
+                    @enderror
                 </div>
             </div>
             <div class="flex justify-center mt-5">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Make
-                    Booking</button>
+                    Booking
+                </button>
             </div>
         </form>
     </div>
