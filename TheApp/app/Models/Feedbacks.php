@@ -10,9 +10,14 @@ class Feedbacks extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'customer_id',
         'email',
         'message',
         'rating',
     ];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }
