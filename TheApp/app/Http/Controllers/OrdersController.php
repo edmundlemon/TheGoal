@@ -23,7 +23,7 @@ class OrdersController extends Controller
     {
         $request->validate([
             'car_id' => 'required',
-            'customer_id' => 'required',
+            // 'customer_id' => 'required',
             'pickup_date' => 'required|after:today',
             'return_date' => 'required|after:pickup_date',
             'pickup_location' => 'required',
@@ -37,7 +37,7 @@ class OrdersController extends Controller
         $total_price = $days * $car->price;
         $order = new Order();
         $order->car_id = $request->car_id;
-        $order->customer_id = $request->customer_id;
+        $order->customer_id = auth('user')->user()->id;
         $order->order_date = $request->order_date;
         $order->delivery_date = $request->delivery_date;
         $order->status = 'Pending Payment';
