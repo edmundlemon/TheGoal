@@ -156,7 +156,7 @@
         <ul>
             <li><a href="index2.html#services">Services</a></li>
             <li><a href="reserve.html">Schedule Appointment</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="/customer/feedback">Feedback</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="index2.html#contact">Contact</a></li>
         </ul>
