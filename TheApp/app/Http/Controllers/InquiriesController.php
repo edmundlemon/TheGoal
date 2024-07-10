@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 class InquiriesController extends Controller
 {
     //
+    public function index()
+    {
+        return view('admin-inquiries', [
+            'inquiries' => Inquiries::all()->sortBy('date')
+        ]);
+    }
 
     public function store(Request $request)
     {
