@@ -60,16 +60,31 @@ class OrdersController extends Controller
             ->with('success', 'Order created successfully.');
     }
 
-    public function destroy(Order $order)
-    {
-        if (auth('customer')->user()->id == $order->customer_id) {
-            $order->delete();
-        }
-        else {
+    public function update(Request $request, Order $order){
+        if (auth('customer')->user()->id != $order->customer_id) {
             return (403);
         }
-        return redirect()->route('customer.orders')
-            ->with('success', 'Order deleted successfully.');
+        elseif ($order->status != 'Pending Payment') {
+            return (403);
+        }
+        $request->validate([
+            'pickup_date' => 'required|after:today',
+            'return_date' => 'required|after:pickup_date',
+            'pickup_location' => 'required',
+            'return_location' => 'required',
+        ]);
+        $startDate = Carbon::parse($request->pickup_date);
+        $endDate = Carbon::parse($request->return_date);
+        $days = $startDate->diffInDays($endDate);
+
+        $car = Car::find($request->car_id);
+        $total_price = $days * $car->price;
+        $order->pickup_date = $request->pickup_date;
+        $order->return_date = $request->return_date;
+        $order->pickup_location = $request->pickup_location;
+        $order->return_location = $request->return_location;
+        $order->total_price = $total_price;
+        $order->save();
     }
 
     public function showPending()
@@ -79,6 +94,19 @@ class OrdersController extends Controller
         return view('show-pending-order', [
             'orders' => $pendingPaymentOrders
         ]);
+    }
+
+    public function destroy(Order $order)
+    {
+        if (auth('customer')->user()->id != $order->customer_id) {
+            return (403);
+        }
+        elseif ($order->status != 'Pending Payment') {
+            return (403);
+        }
+        $order->delete();
+        return redirect()->route('index')
+            ->with('success', 'Order deleted successfully.');
     }
 
     public function approveOrder(Order $order)
