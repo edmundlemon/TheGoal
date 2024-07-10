@@ -45,6 +45,7 @@ class PaymentsController extends Controller
         }
         // dd($request->hasFile('payment_statement'));
         // dd($payment);
+        $order->status = 'Pending Approval';
         $payment->save();
 
         return redirect()->route('index')->with('success', 'Payment Receipt uploaded successfully.');

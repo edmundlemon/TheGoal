@@ -79,7 +79,7 @@
                     <select name="services" id="service" value="{{ old('services') }}">
                         <option value="Car Rental">Car Rental</option>
                         <option value="Airport Transfer">Airport Transfer</option>
-                        <option value="Chauffeur Service">Chauffeur Service</option>
+                        {{-- <option value="Chauffeur Service">Chauffeur Service</option> --}}
                         <option value="Long-Term Rental">Long-Term Rental</option>
                         <option value="Event Transportation">Event Transportation</option>
                         <option value="Self-Drive Adventures">Self-Drive Adventures</option>

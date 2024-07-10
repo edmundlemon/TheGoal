@@ -7,9 +7,9 @@ use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\CustomersController;
-use App\Models\Car;
-use App\Http\Controllers\InquiriesController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\FeedbacksController;
+use App\Http\Controllers\InquiriesController;
 
 Route::get('/', function () {
     return view('index');
@@ -63,6 +63,8 @@ Route::middleware(['auth:customer'])->group(function () {
     Route::get('/logout', [CustomersController::class, 'logout'])->name('logout');
     Route::get('/upload-payment-receipt/{order}', [PaymentsController::class, 'show'])->name('payment.receipt');
     Route::post('/upload-payment-receipt/{order}', [PaymentsController::class, 'store'])->name('payment.receipt');
+    Route::get('/customer/feedback', [FeedbacksController::class, 'index'])->name('customer.feedback');
+    Route::post('/customer/feedback', [FeedbacksController::class, 'store'])->name('customer.feedback');
 });
 
 

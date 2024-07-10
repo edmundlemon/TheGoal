@@ -44,15 +44,17 @@
     <section class="feedback-form-section">
         <div class="feedback-form-container">
             <h2>Send Us Your Feedback</h2>
-            <form id="feedback-form">
-                <div class="form-group">
+            <form id="feedback-form" action="/customer/feedback" method="POST">
+                @csrf
+                @method('POST')
+                {{-- <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label for="rating">Rating:</label>
                     <select id="rating" name="rating" required>
