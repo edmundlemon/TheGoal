@@ -3,6 +3,7 @@
 @section('title', 'Edit Car')
 
 @section('content')
+<br><br><br><br><br>
 <div class="flex flex-col">
 	<h1 class="text-2xl font-bold mb-4">Edit Car</h1>
 	<div class="bg-white p-4 rounded-lg shadow-lg">

@@ -1,14 +1,25 @@
 <header>
     <nav class="navbar">
         &nbsp;
-        <div class="logo" onclick="window.location.href='/'">CAREN</div>
-        <ul class="menu" id="navbar-menu">
-            
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/menu">Menu</a></li>
-            <li><a href="/inquiries">Inquiries</a></li>
-        </ul>
+
+
+        @if (Auth::guard('admin')->check())
+            <ul class="menu flex items-center justify-between p-4 text-white" id="navbar-menu">
+                <div class="logo text-2xl font-bold cursor-pointer" onclick="window.location.href='/view-all-cars'">CAREN</div>
+                <li class="ml-4"><a href="/view-all-cars" class="hover:text-gray-300">View All Cars</a></li>
+                <li class="ml-4"><a href="/view-all-orders" class="hover:text-gray-300">View All Orders</a></li>
+                <li class="ml-4"><a href="/view-all-customers" class="hover:text-gray-300">View All
+                        Customers</a></li>
+            </ul>
+        @else
+            <ul class="menu flex items-center justify-between p-4 text-white" id="navbar-menu">
+                <div class="logo text-2xl font-bold cursor-pointer" onclick="window.location.href='/'">CAREN</div>
+                <li class="ml-4"><a href="/" class="hover:text-gray-300">Home</a></li>
+                <li class="ml-4"><a href="/about" class="hover:text-gray-300">About</a></li>
+                <li class="ml-4"><a href="/menu" class="hover:text-gray-300">Menu</a></li>
+                <li class="ml-4"><a href="/inquiries" class="hover:text-gray-300">Inquiries</a></li>
+            </ul>
+        @endif
 
         @if (Auth::guard('customer')->check())
             <div>

@@ -17,8 +17,9 @@
     @yield('styles')
     <style>
         <style>.flash-card {
-            position: fixed;
-            top: 20px;
+            position: absolute;
+            top: 100px;
+            /* Adjust this value to move the flash card further down */
             right: 20px;
             padding: 15px 25px;
             border-radius: 5px;
@@ -27,6 +28,7 @@
             z-index: 1000;
             animation: fadeInOut 5s ease-in-out;
         }
+
 
         .flash-success {
             background-color: #4CAF50;
@@ -60,14 +62,13 @@
         </div>
     @endif
 
-    @if(Auth::check())
-        @include('header')
-    @endif
+    @include('header')
+
     <main>
         @yield('content')
-        @if(Auth::guard('customer')->check())
-        @include('footer')
-    @endif
+        @if (Auth::guard('customer')->check())
+            @include('footer')
+        @endif
     </main>
 
 

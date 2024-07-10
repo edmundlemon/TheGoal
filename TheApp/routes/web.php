@@ -81,7 +81,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::put('/editcar/{car}', [CarsController::class, 'update'])->name('update.car');
     Route::get('/view-all-cars', [CarsController::class, 'adminView'])->name('view.all.cars');
     Route::delete('/deletecar/{car}', [CarsController::class, 'destroy'])->name('delete.car');
-    Route::post('/logout', [AdminsController::class, 'logout'])->name('admin.logout');
+    Route::get('/admin/logout', [AdminsController::class, 'logout'])->name('admin.logout');
     Route::post('/approve-order/{order}', [OrdersController::class, 'approveOrder'])->name('approve.order');
     Route::get('/pending-orders', [OrdersController::class, 'showPending'])->name('pending.orders');
     Route::get('/view-inquiries', [InquiriesController::class, 'index'])->name('view.inquiries');

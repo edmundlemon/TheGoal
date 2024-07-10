@@ -5,8 +5,8 @@
 
     <body>
         <div class="login-box">
-            <img src="{{ asset('carimage\logo.png') }}" alt="Cafe Logo" width="200" style="display: block; margin: 0 auto" />
-            <h2>CAREN</h2>
+            <img src="{{ asset('images\carimage\logo.png') }}" alt="Cafe Logo" width="200" style="display: block; margin: 0 auto" />
+            <h2 class="text-4xl">CAREN</h2>
             <form id="loginForm" action="/admin/login" method="POST">
                 @csrf
                 @method('POST')
