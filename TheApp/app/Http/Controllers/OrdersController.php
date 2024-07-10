@@ -50,7 +50,7 @@ class OrdersController extends Controller
             ->with('success', 'Order created successfully.');
     }
 
-    public function showPending(Order $order)
+    public function showPending()
     {
         $pendingPaymentOrders = Order::where('status', 'Pending Payment')->get();
         // dd($pendingPaymentOrders);

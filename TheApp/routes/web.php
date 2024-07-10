@@ -8,6 +8,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\InquiriesController;
+use App\Http\Controllers\PaymentsController;
 
 Route::get('/', function () {
     return view('index');
@@ -50,13 +51,16 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth:customer,admin'])->group(function () {
     Route::get('/index', function () {
         return view('index');
-    });
+    })->name('index');
 });
 
 
 Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
+
 Route::middleware(['auth:customer'])->group(function () {
     Route::get('/logout', [CustomersController::class, 'logout'])->name('logout');
+    Route::get('/upload-payment-receipt/{order}', [PaymentsController::class, 'show'])->name('payment.receipt');
+    Route::post('/upload-payment-receipt/{order}', [PaymentsController::class, 'store'])->name('payment.receipt');
 });
 
 
