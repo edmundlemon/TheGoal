@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Admin;
 use App\Models\Car;
 use App\Models\Customer;
+use App\Models\Inquiries;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\User;
@@ -47,6 +48,50 @@ class DatabaseSeeder extends Seeder
             'image' => 'https://via.placeholder.com/150',
             'price' => 200,
         ]);
+
+        Car::create([
+            // 'name' => 'Test Car',
+            // 'id' => 1,
+            'brand' => 'Honda',
+            'model' => 'Civic',
+            'type' => 'Hatcback',
+            'image' => 'https://via.placeholder.com/150',
+            'price' => 500,
+        ]);
+
+        Car::create([
+            // 'name' => 'Test Car',
+            // 'id' => 1,
+            'brand' => 'Nissan',
+            'model' => 'Skyline-GTR',
+            'type' => 'Super Car',
+            'image' => 'https://via.placeholder.com/150',
+            'price' => 1200,
+        ]);
+
+        Car::create([
+            // 'name' => 'Test Car',
+            // 'id' => 1,
+            'brand' => 'Honda',
+            'model' => 'HR-V',
+            'type' => 'SUV',
+            'image' => 'https://via.placeholder.com/150',
+            'price' => 400,
+        ]);
+
+        Inquiries::create([
+            // 'name' => 'Test Car',
+            // 'id' => 1,
+            'name' => 'Test Inquiry',
+            'email' => 'sheesh@gmail.com',
+            'phone' => '0123456789',
+            'date' => '2021-12-01',
+            'time' => '12:00',
+            'message' => 'Hello, I would like to inquire about your services.',
+            'services' => 'Car Rental',
+        ]);
+
+
         Order::create([
             'customer_id' => 1,
             'car_id' => 1,

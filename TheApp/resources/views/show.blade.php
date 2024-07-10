@@ -20,7 +20,11 @@
                 </div>
             </div>
         </div>
-        <form>
+        <form action="/order-car" method="POST">
+            @csrf
+            @method('POST')
+            <input type="hidden" name="car_id" value="{{ $car->id }}">
+
             <div class="flex flex-row space-x-5">
                 <div class="flex flex-col">
                     <label for="pickup_date" class="text-gray-600">Pickup Date</label>
@@ -65,7 +69,8 @@
                 </div>
             </div>
             <div class="flex justify-center mt-5">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Make Booking</button>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Make
+                    Booking</button>
             </div>
         </form>
     </div>
