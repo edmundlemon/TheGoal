@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 class CustomersController extends Controller
 {
     //
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         // dd($request->all());
         $request->validate([
             'name' => 'required',
@@ -30,7 +31,39 @@ class CustomersController extends Controller
         return redirect('/login')->with('success', 'You have been registered successfully!');
     }
 
-    public function authenticate(Request $request){
+    public function edit($id)
+    {
+        return view('edit-customer', [
+            'customer' => Customer::find($id)
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $customer = Customer::find($id);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:customers,email,' . $id,
+            'birth_date' => 'required|date|before:today',
+        ]);
+        $customer->name = $request->name;
+        $customer->email = $request->email;
+        $customer->birth_date = $request->birth_date;
+        $customer->save();
+        return redirect()->back()->with('success', 'Customer updated successfully!');
+    }
+
+
+
+    public function destroy($id)
+    {
+        $customer = Customer::find($id);
+        $customer->delete();
+        return redirect()->back()->with('success', 'Customer deleted successfully!');
+    }
+
+    public function authenticate(Request $request)
+    {
         $credentials = $request->only('password');
         $credentials['email'] = $request['login_email'];
         // dd($credentials);
@@ -43,10 +76,19 @@ class CustomersController extends Controller
         ]);
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/')->with('success', 'You have been logged out!');
+    }
+
+    public function index()
+    {
+        return view(
+            'view-all-customers',
+            ['customers' => Customer::all()]
+        );
     }
 }

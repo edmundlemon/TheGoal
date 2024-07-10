@@ -62,8 +62,8 @@ Route::middleware(['auth:customer,admin'])->group(function () {
 });
 
 
-Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
 
+// customer routes
 Route::middleware(['auth:customer'])->group(function () {
     Route::get('/logout', [CustomersController::class, 'logout'])->name('logout');
     Route::get('/upload-payment-receipt/{order}', [PaymentsController::class, 'show'])->name('payment.receipt');
@@ -73,12 +73,15 @@ Route::middleware(['auth:customer'])->group(function () {
     Route::get('/customer/orders', [OrdersController::class, 'index'])->name('customer.orders');
     Route::get('/view/order/{order}', [OrdersController::class, 'show'])->name('customer.order.show');
     Route::get('/delete/order/{order}', [OrdersController::class, 'destroy'])->name('customer.order.delete');
+    Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
 });
 
-
+// admin routes
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/editcar/{car}', [CarsController::class, 'edit'])->name('edit.car');
     Route::put('/editcar/{car}', [CarsController::class, 'update'])->name('update.car');
+    Route::get('/edit/customer/{customer}', [CustomersController::class, 'edit'])->name('edit.customer');
+    Route::put('/edit/customer/{customer}', [CustomersController::class, 'update'])->name('update.customer');
     Route::get('/view-all-cars', [CarsController::class, 'adminView'])->name('view.all.cars');
     Route::delete('/deletecar/{car}', [CarsController::class, 'destroy'])->name('delete.car');
     Route::get('/admin/logout', [AdminsController::class, 'logout'])->name('admin.logout');
@@ -86,4 +89,14 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/pending-orders', [OrdersController::class, 'showPending'])->name('pending.orders');
     Route::get('/view-inquiries', [InquiriesController::class, 'index'])->name('view.inquiries');
     Route::post('/reject-order/{order}', [OrdersController::class, 'rejectOrder'])->name('orders.reject');
+    Route::get('/view-all-orders', [OrdersController::class, 'showAll'])->name('view.all.orders');
+    Route::get('/view/order/{order}', [OrdersController::class, 'show'])->name('customer.order.show');
+    Route::get('/receipt/{order}', [ReceiptController::class, 'adminGeneratePdf'])->name('receipt.page');
+    Route::post('/return/{order}', [OrdersController::class, 'returnedOrder'])->name('returned');
+    Route::get('/view-all-feedback', [FeedbacksController::class, 'adminIndex'])->name('view.all.feedbacks');
+    Route::get('/delete-feedback/{feedback}', [FeedbacksController::class, 'destroy'])->name('delete.feedback');
+    Route::get('/view-all-inquiries', [InquiriesController::class, 'adminIndex'])->name('view.all.inquiries');
+    Route::get('/delete-inquiry/{inquiry}', [InquiriesController::class, 'destroy'])->name('delete.inquiry');
+    Route::get('/view-all-customers', [CustomersController::class, 'index'])->name('view.all.customers');
+    Route::get('/delete-customer/{customer}', [CustomersController::class, 'destroy'])->name('delete.customer');
 });

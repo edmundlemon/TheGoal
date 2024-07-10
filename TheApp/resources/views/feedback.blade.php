@@ -20,8 +20,8 @@
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Windows_10_Default_Profile_Picture.svg"
                             alt="Customer Image" class="w-12 h-12 rounded-full mr-4">
                         <div class="feedback-content flex flex-col items-start">
-                            <h3 class="text-lg font-bold mb-1">{{ $feedback->message }}</h3>
-                            <p class="text-gray-600">{{ $feedback->name }}</p>
+                            <h3 class="text-lg font-thin mb-1">{{ $feedback->message }}</h3>
+                            <p class="text-white font-bold text-3xl">{{ $feedback->customer->name }}</p>
                             <div class="rating flex">
                                 @for ($i = 0; $i < $feedback->rating; $i++)
                                     <i class="fas fa-star text-yellow-500"></i>
