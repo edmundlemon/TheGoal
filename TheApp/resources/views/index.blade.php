@@ -10,6 +10,11 @@
 </head>
 
 <body>
+    @if (session('success'))
+    <div id="flash-message" class="flash-card flash-success">
+        {{ session('success') }}
+    </div>
+@endif
     <header>
         <nav class="navbar">
             &nbsp;<div class="logo" onclick="window.location.href='/'">CAREN</div>
@@ -159,5 +164,39 @@
         <p>&copy; 2024 CAREN. All Rights Reserved. Terms & Conditions</p>
     </footer>
 </body>
+<style>
+    .flash-card {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 25px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        z-index: 1000;
+        animation: fadeInOut 5s ease-in-out;
+    }
+
+    .flash-success {
+        background-color: #4CAF50;
+    }
+
+    @keyframes fadeInOut {
+        0% { opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        let flashMessage = document.getElementById('flash-message');
+        if (flashMessage) {
+            setTimeout(() => {
+                flashMessage.style.display = 'none';
+            }, 5000); // Disappear after 5 seconds
+        }
+    });
+</script>
 
 </html>
