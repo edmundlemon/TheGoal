@@ -22,14 +22,19 @@ class InquiriesController extends Controller
             'date' => 'required|after:today',
             'time' => 'required',
             'services' => 'required',
-            // 'message' => 'required',
+            'message' => 'nullable',
             // 'consent' => 'required'
         ], $customMessages);
+        
         $inquiry = new Inquiries();
         $inquiry->name = $request->name;
         $inquiry->email = $request->email;
         $inquiry->phone = $request->phone;
         $inquiry->message = $request->message;
+        $inquiry->date = $request->date;
+        $inquiry->time = $request->time;
+        $inquiry->services = $request->services;
+
         $inquiry->save();
 
         return redirect()->back()->with('message', 'Inquiry sent successfully');

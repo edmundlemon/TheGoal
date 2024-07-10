@@ -6,7 +6,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/menu">Menu</a></li>
-            <li><a href="/reservation">Reservation</a></li>
+            <li><a href="/inquiries">Inquiries</a></li>
         </ul>
         <button class="contact-button" onclick="window.location.href='/login'">
             Login</button>&nbsp;

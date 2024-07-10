@@ -43,7 +43,7 @@
                         </div>
                         <p> From MYR : {{ $car->price }} </p>
                         <div class="w-full flex justify-center">
-                            <a class="bg-blue-500 text-white w-24 rounded-lg whitespace-nowrap py-2"
+                            <a class="bg-blue-500 text-white rounded-lg whitespace-nowrap py-2 px-5"
                                 href="{{ route('show', $car->id) }}">Show Details
                             </a>
                         </div>

@@ -4,7 +4,7 @@
 @section('title', 'Book')
 
 <div class="flex justify-center w-full mt-32">
-    <div class="w-9/12 flex flex-col items-center m-5 border">
+    <div class="w-9/12 flex flex-col items-center m-5 border p-5 rounded shadow-md">
         {{-- {"id":1,"brand":"Toyota","model":"Corolla","type":"Sedan","image":"https:\/\/via.placeholder.com\/150","price":200,"created_at":"2024-07-10T08:39:54.000000Z","updated_at":"2024-07-10T08:39:54.000000Z"} --}}
         <h1 class="text-3xl font-bold text-gray-800">Car Info</h1>
 
@@ -64,7 +64,9 @@
                     </select>
                 </div>
             </div>
-
+            <div class="flex justify-center mt-5">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Make Booking</button>
+            </div>
         </form>
     </div>
 </div>

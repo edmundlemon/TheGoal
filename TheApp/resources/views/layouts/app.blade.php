@@ -47,18 +47,4 @@
     </main>
 
 </body>
-<<<<<<< HEAD
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        let flashMessage = document.getElementById('flash-message');
-        if (flashMessage) {
-            setTimeout(() => {
-                flashMessage.style.display = 'none';
-            }, 5000); // Disappear after 5 seconds
-        }
-    });
-</script>
 </html>
-=======
-</html>
->>>>>>> a921825db2754154c175de4804f98d2256a356f6
