@@ -5,7 +5,9 @@
 
         @if (Auth::guard('admin')->check())
             <ul class="menu flex items-center justify-between p-4 text-white" id="navbar-menu">
-                <div class="logo text-2xl font-bold cursor-pointer" onclick="window.location.href='/view-all-cars'">CAREN</div>
+                <div class="logo text-2xl font-bold cursor-pointer" onclick="window.location.href='/view-all-cars'">CAREN
+                </div>
+
                 <li class="ml-4"><a href="/view-all-cars" class="hover:text-gray-300">View All Cars</a></li>
                 <li class="ml-4"><a href="/view-all-orders" class="hover:text-gray-300">View All Orders</a></li>
                 <li class="ml-4"><a href="/view-all-customers" class="hover:text-gray-300">View All
@@ -28,6 +30,7 @@
             </div>
         @elseif (Auth::guard('admin')->check())
             <div>
+                <a href="/addcar" class="contact-button">Add Car</a>
                 <a href="/pending-orders" class="contact-button">Pending Orders</a>
                 <a href="/admin/logout" class="contact-button">Logout</a>
             </div>

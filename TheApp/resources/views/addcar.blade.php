@@ -3,7 +3,9 @@
 @section('title', 'Add Car')
 
 @section('content')
-<div class="container mx-auto p-4">
+<br><br><br><br><br>
+
+<div class="container mx-auto p-4 border">
     <h1 class="text-2xl font-bold mb-4">Add Car</h1>
     <form action="/addcar" method="POST" enctype="multipart/form-data" class="space-y-4">
         @csrf
