@@ -69,6 +69,7 @@
             <p class="text-gray-800 font-medium">Status: <span id="status"
                     class="text-gray-600 font-semibold">{{ $order->status }}</span></p>
         </div>
+        @if ($order->status === 'Pending Payment' && Auth::guard('customer')->check())
         <div class="w-full mb-4">
             <form action="/upload-payment-receipt/{{ $order->id }}" method="POST" 
                 class="flex flex-col w-full space-y-2"
@@ -86,6 +87,7 @@
                     Receipt</button>
             </form>
         </div>
+        @endif
     </div>
 
     <script>

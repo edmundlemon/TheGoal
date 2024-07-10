@@ -34,6 +34,10 @@
             background-color: #4CAF50;
         }
 
+        .flash-error {
+            background-color: #e72f2f;
+        }
+
         @keyframes fadeInOut {
             0% {
                 opacity: 0;
@@ -57,8 +61,14 @@
 
 <body class="">
     @if (session('success'))
-        <div id="flash-message" class="flash-card flash-success">
+        <div id="flash-message" class="flash-card flash-success mt-16">
             {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div id="flash-message" class="flash-card flash-error mt-16">
+            {{ session('error') }}
         </div>
     @endif
 
@@ -66,7 +76,7 @@
 
     <main>
         @yield('content')
-        @if (Auth::guard('customer')->check())
+        @if (!Auth::guard('admin')->check())
             @include('footer')
         @endif
     </main>

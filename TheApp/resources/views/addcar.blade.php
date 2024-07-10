@@ -12,11 +12,11 @@
         @method('POST')
         <div>
             <label for="brand" class="block text-sm font-medium text-gray-700">Brand:</label>
-            <input type="text" id="brand" name="brand" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+            <input type="text" id="brand" name="brand" class="shadow-xl border mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
         </div>
         <div>
             <label for="model" class="block text-sm font-medium text-gray-700">Model:</label>
-            <input type="text" id="model" name="model" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+            <input type="text" id="model" name="model" class="shadow-xl border mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
         </div>
         <div>
             <label for="type" class="block text-sm font-medium text-gray-700">Type:</label>
@@ -30,11 +30,11 @@
         </div>
         <div>
             <label for="price" class="block text-sm font-medium text-gray-700">Price:</label>
-            <input type="number" id="price" name="price" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+            <input type="number" id="price" name="price" class="shadow-xl border mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
         </div>
         <div>
             <label for="image" class="block text-sm font-medium text-gray-700">Image:</label>
-            <input type="file" name="image" id="image" class="mt-1 block w-full text-sm text-gray-500
+            <input type="file" name="image" id="image" class="shadow-xl border mt-1 block w-full text-sm text-gray-500
                 file:mr-4 file:py-2 file:px-4
                 file:rounded-full file:border-0
                 file:text-sm file:font-semibold
