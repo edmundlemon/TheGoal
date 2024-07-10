@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@include('header')
 
 @section('title', 'Book')
 

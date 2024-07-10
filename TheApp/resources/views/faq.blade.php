@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAREN - FAQs</title>
-    <link rel="stylesheet" href="{{ asset('css/faq.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</head>
-<body>
-@include('header')
+@extends('layouts.app')
 
+@section('title', 'FAQs')
+
+@section('content')
     <div class="faq-hero">
         <h1>Explore FAQs</h1>
         <p>Find answers to common questions about car rentals</p>
@@ -50,7 +43,4 @@
             <a href="index2.html#contact" class="btn">GET IN TOUCH</a>
         </div><br>
     </section>
-
-    @include('footer')
-</body>
-</html>
+@endsection

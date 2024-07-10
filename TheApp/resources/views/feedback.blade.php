@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Feedback - CAREN</title>
-    <link rel="stylesheet" href="{{ asset('css/feedback.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</head>
-<body>
-@include('header')
+@extends('layouts.app')
 
+@section('title', 'About us')
+
+@section('content')
     <div class="feedback-hero">
         <h1>Customer Feedback</h1>
         <p>See what our customers are saying about us</p>
@@ -73,9 +66,6 @@
             </form>
         </div>
     </section>
-
-@include('footer')
-
+@endsection
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-</body>
-</html>
+

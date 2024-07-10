@@ -16,9 +16,9 @@ class OrdersController extends Controller
 
     public function index()
     {
-        $pendingPaymentOrders = Order::where('status', 'Pending Payment')->get();
-        $approvedOrders = Order::where('status', 'Approved')->get();
-        $rejectedOrders = Order::where('status', 'Rejected')->get();
+        $pendingPaymentOrders = Order::where('status', 'Pending Payment')->where('customer_id', auth('customer')->user()->id)->get();
+        $approvedOrders = Order::where('status', 'Approved')->where('customer_id', auth('customer')->user()->id)->get();
+        $rejectedOrders = Order::where('status', 'Rejected')->where('customer_id', auth('customer')->user()->id)->get();
         return view('orders-index', [
             'pendingPaymentOrders' => $pendingPaymentOrders,
             'approvedOrders' => $approvedOrders,
