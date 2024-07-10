@@ -15,6 +15,8 @@ class InquiriesController extends Controller
         ]);
     }
 
+
+    
     public function store(Request $request)
     {
 

@@ -85,4 +85,5 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/approve-order/{order}', [OrdersController::class, 'approveOrder'])->name('approve.order');
     Route::get('/pending-orders', [OrdersController::class, 'showPending'])->name('pending.orders');
     Route::get('/view-inquiries', [InquiriesController::class, 'index'])->name('view.inquiries');
+    Route::post('/reject-order/{order}', [OrdersController::class, 'rejectOrder'])->name('orders.reject');
 });
