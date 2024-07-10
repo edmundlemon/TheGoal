@@ -11,14 +11,21 @@ class InquiriesController extends Controller
 
     public function store(Request $request)
     {
+        $customMessages = [
+            'phone.regex' => 'Only valid phone numbers are allowed',
+        ];
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'phone' => 'required',
-            'message' => 'required',
-            'consent' => 'required'
-        ]);
+            'phone' => ['required', 'regex:/^(01\d{8}|01\d{9}|01\d-\d{7}|01\d-\d{8}|0\d{9}|0\d-\d{7})$/'],
+            'date' => 'required|after:today',
+            'time' => 'required',
+            'services' => 'required',
+            // 'message' => 'required',
+            // 'consent' => 'required'
+        ], $customMessages);
 
+        dd($request->all());
         $inquiry = new Inquiries();
         $inquiry->name = $request->name;
         $inquiry->email = $request->email;

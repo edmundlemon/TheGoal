@@ -50,15 +50,26 @@ class OrdersController extends Controller
             ->with('success', 'Order created successfully.');
     }
 
-    public function approve(Order $order)
+    public function showPending(Order $order)
     {
-        if (auth('admin')->user()->hasRole('admin')) {
+        $pendingPaymentOrders = Order::where('status', 'Pending Payment')->get();
+        // dd($pendingPaymentOrders);
+        return view('show-pending-order', [
+            'orders' => $pendingPaymentOrders
+        ]);
+    }
+
+    public function approveOrder(Order $order)
+    {
+        if (auth('admin')->user()) {
             $order->status = 'Approved';
             $order->save();
         }
         else {
             return (403);
         }
+        return redirect()->route('pending.orders')
+            ->with('success', 'Order approved successfully.');
     }
 
     public function orderDetail(Order $order)
