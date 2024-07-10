@@ -16,9 +16,9 @@ class OrdersController extends Controller
 
     public function index()
     {
-        $pendingPaymentOrders = Order::where('status', 'Pending Payment')->get();
-        $approvedOrders = Order::where('status', 'Approved')->get();
-        $rejectedOrders = Order::where('status', 'Rejected')->get();
+        $pendingPaymentOrders = Order::where('status', 'Pending Payment')->where('customer_id', auth('customer')->user()->id)->get();
+        $approvedOrders = Order::where('status', 'Approved')->where('customer_id', auth('customer')->user()->id)->get();
+        $rejectedOrders = Order::where('status', 'Rejected')->where('customer_id', auth('customer')->user()->id)->get();
         return view('orders-index', [
             'pendingPaymentOrders' => $pendingPaymentOrders,
             'approvedOrders' => $approvedOrders,
@@ -86,7 +86,6 @@ class OrdersController extends Controller
         $order->total_price = $total_price;
         $order->save();
     }
-    
 
     public function showPending()
     {
@@ -141,5 +140,17 @@ class OrdersController extends Controller
     public function orderDetail(Order $order)
     {
         return view('orders.detail', compact('order'));
+    }
+
+    public function show(Order $order)
+    {
+        $startDate = Carbon::parse($order->pickup_date);
+        $endDate = Carbon::parse($order->return_date);
+        $days = $startDate->diffInDays($endDate);
+        return view('view-order', [
+            'order' => Order::find($order->id),
+            'days' => $days,
+        ]
+    );
     }
 }

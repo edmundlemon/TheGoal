@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAREN - Car Rental</title>
+@section('title', 'CAREN')
+
+@section('content')
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-
-<body>
     @include('header')
     <div class="hero" id="hero"
     style="background-image: url('{{ asset('images/carimage/Car-Hire-bg.jpg') }}');"
@@ -101,9 +94,8 @@
             </div>
         </div>
     </section>
+@endsection
 
-    @include('footer')
-</body>
 <style>
     .flash-card {
         position: fixed;

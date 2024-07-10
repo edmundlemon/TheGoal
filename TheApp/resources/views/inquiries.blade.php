@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meeting Request Form</title>
+@section('title', 'Inquiries')
+
+@section('content')
+
     <link rel="stylesheet" href="{{ asset('css/reserve.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    {{-- @vite('resources/css/app.css') --}}
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body>
-    @include('header')
-
     <main>
         <section class="form-section">
             <h1>Meeting Request Form</h1><br>
@@ -114,9 +104,7 @@
             </form>
         </section>
     </main>
-
-    @include('footer')
-
+@endsection
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
     <script></script>
 </body>

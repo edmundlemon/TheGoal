@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>LOGIN</title>
     <link rel="stylesheet" href="{{ asset('css/acc.css') }}">
+    <title>Login</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -79,7 +79,7 @@
           @enderror
           <input
             id="reg_email"
-            name="reg_email"
+            name="email"
             type="email"
             class="field"
             placeholder="Email"
@@ -123,16 +123,19 @@
           class="field"
           placeholder="Birthday"
           required
+          title="Please enter your birth date"
           />
           @error('birth_date')
           <p class="text-red-500 text-xs mt-1">
               {{$message}}
           </p>
-          @enderror
-          <select id="gender" name="gender">
-            <option value="Male">Male</option>
-            <option value="Female">female</option>
-          </select>
+            @enderror
+            <div class="select-wrapper">
+            <select id="gender" name="gender" class="field">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            </div>
           @error('gender')
           <p class="text-red-500 text-xs mt-1">
               {{$message}}
@@ -167,12 +170,14 @@
         x.style.left = "-400px";
         y.style.left = "50px";
         z.style.left = "110px";
+        document.title = "Register";
       }
 
       function login() {
         x.style.left = "50px";
         y.style.left = "450px";
         z.style.left = "0";
+        document.title = "Login";
       }
 
       function validateLogin(event) {}
