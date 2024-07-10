@@ -25,6 +25,7 @@ class ReceiptController extends Controller
             'car_brand' => $order->car->brand,
             'car_model' => $order->car->model,
             'car_type' => $order->car->type,
+            'total_price' => number_format($order->total_price, 2, '.', ',')
         ];
 
         $pdf = Pdf::loadView('receipt', $data);

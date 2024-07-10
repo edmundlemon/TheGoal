@@ -1,39 +1,32 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>ADMIN LOGIN</title>
-  </head>
+@extends('layouts.app')
+  @section('title', 'Admin Login')
 
+  @section('content')
   <body>
     <div class="login-box">
       <img
-        src="carimage\logo.png"
+        src="{{asset('carimage\logo.png')}}"
         alt="Cafe Logo"
         width="200"
         style="display: block; margin: 0 auto"
       />
       <h2>CAREN</h2>
-      <form id="loginForm" action="/admin/login">
+      <form id="loginForm" action="/admin/login" method="POST">
         @csrf
         @method('POST')
         <div class="user-box">
-          <input type="text" class="field" placeholder="User ID" required />
+          <input type="text" class="field" name="email" id="email" placeholder="Email" required />
         </div>
         <div class="user-box">
           <input
             type="password"
             class="field"
             placeholder="Password"
+            name="password"
             required
           />
         </div>
-        <a href="admin page.html" id="submitButton">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          Submit
-        </a>
+        <button type="submit" class="inline-block mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-40">Login</button>
       </form>
     </div>
   </body>
@@ -63,8 +56,9 @@
   }
 
 </script>
+@endsection
 
-
+@section('styles')
 <style>
   h2{
     font-family: Algerian, sans-serif;
@@ -202,3 +196,4 @@
     animation: btn-anim2 1s linear infinite;
   }
 </style>
+@endsection

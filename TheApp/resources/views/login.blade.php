@@ -31,7 +31,7 @@
 
     <div class="hero">
       <div class="form">
-        <a href="/admin-login.html" id="IconLink">
+        <a href="/admin/login" id="IconLink">
           <i class="fa fa-user" id="Icon"></i>
         </a>
         <div class="button">

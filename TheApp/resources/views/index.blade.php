@@ -26,7 +26,7 @@
     <div class="hero" id="hero">
         <h1>CAREN</h1>
         <p>Your Ultimate Car Rental Experience</p>
-        <a href="menu.html" class="cta-button">View Services</a>
+        <a href="/menu" class="cta-button">View Services</a>
     </div>
 
     <section class="discover">
