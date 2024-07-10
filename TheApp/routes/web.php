@@ -40,6 +40,8 @@ Route::get('/faq', function () {
 Route::get('/addcar', [CarsController::class, 'create'])->name('add.car');
 Route::post('/addcar', [CarsController::class, 'store'])->name('add.car');
 
+Route::post('/order-car', [OrdersController::class, 'store'])->name('book.car');
+
 Route::middleware(['guest'])->group(function () {
     Route::post('/register', [CustomersController::class, 'store'])->name('register');
     Route::get('/login', function () {

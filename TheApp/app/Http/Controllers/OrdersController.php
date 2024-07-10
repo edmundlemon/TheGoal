@@ -33,13 +33,15 @@ class OrdersController extends Controller
         $startDate = Carbon::parse($request->pickup_date);
         $endDate = Carbon::parse($request->return_date);
         $days = $startDate->diffInDays($endDate);
+
         $car = Car::find($request->car_id);
         $total_price = $days * $car->price;
+        
         $order = new Order();
         $order->car_id = $request->car_id;
         $order->customer_id = auth('user')->user()->id;
-        $order->order_date = $request->order_date;
-        $order->delivery_date = $request->delivery_date;
+        $order->pickup_date = $request->pickup_date;
+        $order->return_date = $request->return_date;
         $order->status = 'Pending Payment';
         $order->pickup_location = $request->pickup_location;
         $order->return_location = $request->return_location;

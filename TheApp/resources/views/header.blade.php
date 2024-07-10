@@ -14,7 +14,6 @@
 </header>
 
 <style scoped>
-    
     /* Navbar Styles */
     .navbar {
         background-color: rgba(15, 40, 30, 0.9);
