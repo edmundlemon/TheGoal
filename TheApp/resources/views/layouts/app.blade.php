@@ -47,6 +47,7 @@
     </main>
 
 </body>
+<<<<<<< HEAD
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         let flashMessage = document.getElementById('flash-message');
@@ -58,3 +59,6 @@
     });
 </script>
 </html>
+=======
+</html>
+>>>>>>> a921825db2754154c175de4804f98d2256a356f6

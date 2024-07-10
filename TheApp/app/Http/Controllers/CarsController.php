@@ -29,10 +29,11 @@ class CarsController extends Controller
 
     public function show($id)
     {
-        return view('cars.show', [
+        return view('show', [
             'car' => Car::find($id)
         ]);
     }
+
 
     public function create()
     {

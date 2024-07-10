@@ -12,18 +12,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            &nbsp;<div class="logo" onclick="window.location.href='/'">CAREN</div>
-            <ul class="menu" id="navbar-menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/menu">Menu</a></li>
-                <li><a href="/reservation">Reservation</a></li>
-            </ul>
-            <button class="contact-button" onclick="window.location.href='/login'">Login</button>&nbsp;
-        </nav>
-    </header>
+@include('header')
     
     <main>
         <section class="form-section">
@@ -122,22 +111,7 @@
         </section>
     </main>
     
-    <footer><br>
-        <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        <ul>
-
-            <li><a href="/reservation">Schedule Appointment</a></li>
-            <li><a href="/feedback">Feedback</a></li>
-            <li><a href="/faq">FAQ</a></li>
-
-        </ul>
-        <br><br>
-        <p>&copy; 2024 CAREN. All Rights Reserved. Terms & Conditions</p>
-    </footer>
+    @include('footer')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
     <script>

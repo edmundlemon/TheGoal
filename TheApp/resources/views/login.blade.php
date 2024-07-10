@@ -11,24 +11,7 @@
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
   </head>
   <body>
-    <header>
-      <nav class="navbar">
-        &nbsp;
-        <div class="logo" onclick="window.location.href='/'">CAREN</div>
-        <ul class="menu" id="navbar-menu">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/menu">Menu</a></li>
-            <li><a href="/reservation">Reservation</a></li>
-        </ul>
-        <button
-          class="contact-button"
-          onclick="window.location.href='/login'"
-        >
-          Login</button
-        >&nbsp;
-      </nav>
-    </header>
+
 
     <div class="hero">
       <div class="form">

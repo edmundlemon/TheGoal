@@ -6,8 +6,8 @@ use App\Http\Controllers\CarsController;
 use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ReceiptController;
-use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\FeedbacksController;
 use App\Http\Controllers\InquiriesController;
 
@@ -21,6 +21,7 @@ Route::get('/about', function () {
 
 
 Route::get('/menu', [CarsController::class, 'index'])->name('menu');
+Route::get('/show/{id}', [CarsController::class, 'show'])->name('show');
 
 Route::get('/reservation', function () {
     return view('reservation');
