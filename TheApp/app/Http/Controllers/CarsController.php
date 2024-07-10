@@ -12,7 +12,8 @@ class CarsController extends Controller
     public function index()
     {
         return view('menu', [
-            'cars' => Car::all()
+            'cars' => Car::all(),
+            'types' => Car::all()->pluck('type')->unique()
         ]);
     }
 

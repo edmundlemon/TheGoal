@@ -15,7 +15,6 @@ Route::get('/about', function () {
     return view('about');
 });
 
-
 Route::get('/menu', [CarsController::class, 'index'])->name('menu');
 
 
