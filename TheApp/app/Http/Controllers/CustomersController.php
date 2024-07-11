@@ -64,7 +64,7 @@ class CustomersController extends Controller
             $customer->save();
             return redirect('/login')->with('success', 'Password reset successfully!');
         }
-        return redirect()->back()->with('error', 'Invalid credentials!');
+        return redirect()->back()->withErrors(['error' => 'These credentials do not match our records.']);;
     }
 
     public function update(Request $request, $id)

@@ -34,6 +34,8 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'birth_date' => '1990-01-01',
             'gender' => 'Male',
+            'security_question' => "What is your pet's name?",
+            'security_answer' => 'Dog',
         ]);
         Admin::create([
             // 'id' => 1,
