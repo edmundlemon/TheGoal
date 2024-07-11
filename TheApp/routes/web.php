@@ -19,9 +19,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/forgot-password', function () {
-    return view('forgot-password');
-});
+// Route::get('/forgot-password', function () {
+//     return view('forgot-password');
+// });
 
 Route::get('/menu', [CarsController::class, 'index'])->name('menu');
 
@@ -55,6 +55,8 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/login', [CustomersController::class, 'authenticate'])->name('login');
     Route::get('/admin/login', [AdminsController::class, 'login'])->name('admin.login');
     Route::post('/admin/login', [AdminsController::class, 'authenticate'])->name('admin.login');
+    Route::get('/forgot-password',[CustomersController::class, 'forgotPasswordForm'])->name('forgot.password');
+    Route::post('/forgot-password',[CustomersController::class, 'forgotPassword'])->name('forgot.password');
 });
 
 Route::middleware(['auth:customer,admin'])->group(function () {
@@ -80,8 +82,6 @@ Route::middleware(['auth:customer'])->group(function () {
     Route::get('/edit/order/{order}', [OrdersController::class, 'edit'])->name('edit.order');
     Route::put('edit/order/{order}', [OrdersController::class, 'update'])->name('edit.order');
     Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
-    Route::get('/forgot-password',[CustomersController::class, 'forgotPasswordForm'])->name('forgot.password');
-    Route::post('/forgot-password',[CustomersController::class, 'forgotPassword'])->name('forgot.password');
 });
 
 // admin routes

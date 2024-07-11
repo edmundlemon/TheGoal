@@ -40,6 +40,7 @@
                 @enderror
                 <input id="password" name="password" type="password" class="field" placeholder="Password" required />
                 <!-- <input type="checkbox" class="checkbox"><span>Remember the Password</span> -->
+                <a href="/forgot-password">Forgot Password?</a>
                 <button type="submit" class="submit" onclick="login_user()">
                     LOGIN
                 </button>
