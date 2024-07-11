@@ -92,6 +92,25 @@
                         {{ $message }}
                     </p>
                 @enderror
+                <div class="select-wrapper">
+                    <select id="security_question" name="security_question" class="field">
+                        <option value="" disabled selected>Select one from below</option>
+                        <option value="What is your pet's name?">What is your pet's name?</option>
+                        <option value="When is your parent's birthday?">When is your parent's birthday?</option>
+                        <option value="What is your favorite celebrity?">What is your favorite celebrity?</option>
+                    </select>
+                </div>
+                @error('security_question')
+                    <p class="text-red-500 text-xs mt-1">
+                        {{ $message }}
+                    </p>
+                @enderror
+                <input id="security_answer" name="security_answer" type="text" class="field" placeholder="Security Answer" required />
+                @error('security_answer')
+                    <p class="text-red-500 text-xs mt-1">
+                        {{ $message }}
+                    </p>
+                @enderror
                 <!-- <input type="checkbox" class="checkbox"><span>Remember the Password</span> -->
                 <button type="submit" class="submit" onclick="register_user()">Register</button>
             </form>

@@ -76,6 +76,8 @@ Route::middleware(['auth:customer'])->group(function () {
     Route::get('/edit/order/{order}', [OrdersController::class, 'edit'])->name('edit.order');
     Route::put('edit/order/{order}', [OrdersController::class, 'update'])->name('edit.order');
     Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
+    Route::get('/forgot-password',[CustomersController::class, 'forgotPasswordForm'])->name('forgot.password');
+    Route::post('/forgot-password',[CustomersController::class, 'forgotPassword'])->name('forgot.password');
 });
 
 // admin routes

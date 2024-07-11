@@ -17,7 +17,9 @@ class CustomersController extends Controller
             'email' => 'required|email|unique:customers',
             'password' => 'required|confirmed|min:8',
             'birth_date' => 'required|date|before:today',
-            'gender' => 'required|in:Male,Female'
+            'gender' => 'required|in:Male,Female',
+            'security_question' => 'required',
+            'security_answer' => 'required',
         ]);
 
         $customer = new Customer();
@@ -26,6 +28,8 @@ class CustomersController extends Controller
         $customer->password = bcrypt($request->password);
         $customer->birth_date = $request->birth_date;
         $customer->gender = $request->gender;
+        $customer->security_question = $request->security_question;
+        $customer->security_answer = $request->security_answer;
         $customer->save();
         $request->session()->regenerate();
         return redirect('/login')->with('success', 'You have been registered successfully!');
@@ -36,6 +40,31 @@ class CustomersController extends Controller
         return view('edit-customer', [
             'customer' => Customer::find($id)
         ]);
+    }
+
+    public function forgotPasswordForm()
+    {
+        return view('forgot-password');
+    }
+
+    public function forgotPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'security_question' => 'required',
+            'security_answer' => 'required',
+            'password' => 'required|confirmed|min:8',
+        ]);
+        $customer = Customer::where('email', $request->email)
+            ->where('security_question', $request->security_question)
+            ->where('security_answer', $request->security_answer)
+            ->first();
+        if ($customer) {
+            $customer->password = bcrypt($request->password);
+            $customer->save();
+            return redirect('/login')->with('success', 'Password reset successfully!');
+        }
+        return redirect()->back()->with('error', 'Invalid credentials!');
     }
 
     public function update(Request $request, $id)
