@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
-            $table->string('email');      
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');  
             $table->text('message')->nullable();
             $table->integer('rating');
             $table->timestamps();

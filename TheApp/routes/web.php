@@ -40,8 +40,7 @@ Route::get('/403', function () {
     return view('forbidden');
 })->name('forbidden');
 
-Route::get('/addcar', [CarsController::class, 'create'])->name('add.car');
-Route::post('/addcar', [CarsController::class, 'store'])->name('add.car');
+
 
 Route::post('/order-car', [OrdersController::class, 'store'])->name('book.car');
 
@@ -61,7 +60,6 @@ Route::middleware(['auth:customer,admin'])->group(function () {
     })->name('index');
 });
 
-
 Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
 
 Route::middleware(['auth:customer'])->group(function () {
@@ -77,6 +75,8 @@ Route::middleware(['auth:customer'])->group(function () {
 
 
 Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/addcar', [CarsController::class, 'create'])->name('add.car');
+    Route::post('/addcar', [CarsController::class, 'store'])->name('add.car');
     Route::get('/editcar/{car}', [CarsController::class, 'edit'])->name('edit.car');
     Route::put('/editcar/{car}', [CarsController::class, 'update'])->name('update.car');
     Route::get('/view-all-cars', [CarsController::class, 'adminView'])->name('view.all.cars');

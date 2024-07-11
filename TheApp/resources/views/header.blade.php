@@ -8,6 +8,12 @@
             <li><a href="/about">About</a></li>
             <li><a href="/menu">Menu</a></li>
             <li><a href="/inquiries">Inquiries</a></li>
+            @if (Auth::guard('admin')->check())
+                <li><a href="/addcar">Add Car</a></li>
+                <li><a href="/view-all-cars">View All Cars</a></li>
+                <li><a href="/view-inquiries">View Inquiries</a></li>
+                {{-- <li><a href="/show-pending-order">Approve Order</a></li> --}}
+            @endif
         </ul>
 
         @if (Auth::guard('customer')->check())
