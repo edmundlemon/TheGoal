@@ -13,9 +13,9 @@
                 <li class="ml-4"><a href="/view-all-customers" class="hover:text-gray-300">View All
                         Customers</a></li>
                 <li class="ml-4"><a href="/view-all-feedback" class="hover:text-gray-300">View All
-                        Feedbac</a></li>
+                        Feedback</a></li>
                 <li class="ml-4"><a href="/view-all-inquiries" class="hover:text-gray-300">View All
-                        Inquiris</a></li>
+                        Inquiries</a></li>
             </ul>
         @else
             <ul class="menu flex items-center justify-between p-4 text-white" id="navbar-menu">

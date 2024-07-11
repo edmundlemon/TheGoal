@@ -21,7 +21,6 @@ Route::get('/about', function () {
 
 Route::get('/menu', [CarsController::class, 'index'])->name('menu');
 
-Route::get('/car/{id}', [CarsController::class, 'show_car'])->name('car');
 
 Route::get('/inquiries', function () {
     return view('inquiries');
@@ -58,6 +57,8 @@ Route::middleware(['auth:customer,admin'])->group(function () {
     Route::get('/index', function () {
         return view('index');
     })->name('index');
+    Route::get('/view/order/{order}', [OrdersController::class, 'show'])->name('customer.order.show');
+    // Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
 });
 
 
@@ -65,13 +66,15 @@ Route::middleware(['auth:customer,admin'])->group(function () {
 // customer routes
 Route::middleware(['auth:customer'])->group(function () {
     Route::get('/logout', [CustomersController::class, 'logout'])->name('logout');
+    Route::get('/car/{id}', [CarsController::class, 'show_car'])->name('car');
     Route::get('/upload-payment-receipt/{order}', [PaymentsController::class, 'show'])->name('payment.receipt');
     Route::post('/upload-payment-receipt/{order}', [PaymentsController::class, 'store'])->name('payment.receipt');
     Route::get('/customer/feedback', [FeedbacksController::class, 'index'])->name('customer.feedback');
     Route::post('/customer/feedback', [FeedbacksController::class, 'store'])->name('customer.feedback');
     Route::get('/customer/orders', [OrdersController::class, 'index'])->name('customer.orders');
-    Route::get('/view/order/{order}', [OrdersController::class, 'show'])->name('customer.order.show');
     Route::get('/delete/order/{order}', [OrdersController::class, 'destroy'])->name('customer.order.delete');
+    Route::get('/edit/order/{order}', [OrdersController::class, 'edit'])->name('edit.order');
+    Route::put('edit/order/{order}', [OrdersController::class, 'update'])->name('edit.order');
     Route::get('/receipt/{order}', [ReceiptController::class, 'generatePdf'])->name('receipt.page');
 });
 
@@ -91,8 +94,6 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/view-inquiries', [InquiriesController::class, 'index'])->name('view.inquiries');
     Route::post('/reject-order/{order}', [OrdersController::class, 'rejectOrder'])->name('orders.reject');
     Route::get('/view-all-orders', [OrdersController::class, 'showAll'])->name('view.all.orders');
-    Route::get('/view/order/{order}', [OrdersController::class, 'show'])->name('customer.order.show');
-    Route::get('/receipt/{order}', [ReceiptController::class, 'adminGeneratePdf'])->name('receipt.page');
     Route::post('/return/{order}', [OrdersController::class, 'returnedOrder'])->name('returned');
     Route::get('/view-all-feedback', [FeedbacksController::class, 'adminIndex'])->name('view.all.feedbacks');
     Route::get('/delete-feedback/{feedback}', [FeedbacksController::class, 'destroy'])->name('delete.feedback');
@@ -100,4 +101,5 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/delete-inquiry/{inquiry}', [InquiriesController::class, 'destroy'])->name('delete.inquiry');
     Route::get('/view-all-customers', [CustomersController::class, 'index'])->name('view.all.customers');
     Route::get('/delete-customer/{customer}', [CustomersController::class, 'destroy'])->name('delete.customer');
+    Route::get('/admin/receipt/{order}', [ReceiptController::class, 'adminGeneratePdf'])->name('admin.receipt.page');
 });

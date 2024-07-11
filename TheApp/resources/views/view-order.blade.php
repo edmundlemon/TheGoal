@@ -7,7 +7,7 @@
 
     <div class="max-w-3xl mx-auto bg-white shadow-md rounded px-12 pt-6 pb-8 mb-4 border relative">
         <button class="absolute top-2 right-2 hover:font-bold transition-font duration-300 ease-in-out"
-            onclick="window.location.href='/customer/orders'">Back</button>
+            onclick="history.back()">Back</button>
         <div class="flex justify-between mb-4">
             <h2 class="text-4xl font-bold text-indigo-600">Order Details</h2>
         </div>

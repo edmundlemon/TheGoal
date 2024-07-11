@@ -39,6 +39,6 @@ class Customer extends Authenticatable
 
     public function feedbacks()
     {
-        return $this->hasMany(Feedback::class);
+        return $this->hasMany(Feedbacks::class);
     }
 }
