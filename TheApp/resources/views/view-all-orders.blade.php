@@ -26,6 +26,8 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Price</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Payment Statement</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Actions</th>
                         </tr>
                     </thead>
@@ -41,13 +43,23 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $order->status }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     MYR {{ number_format($order->total_price, 2, '.', '') }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    @if ($order->payment)
+                                    <a href="{{ asset($order->payment->payment_statement) }}" target="_blank"
+                                        class="text-blue-500 hover:underline">View PDF</a>
+                                    @else
+                                        <span class="text-red-500">No payment statement</span>
+                                    @endif
+                                </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex flex-row space-x-3">
+                                    @if ($order->payment)
                                     <form action="/approve-order/{{ $order->id }}" method="POST">
                                         @csrf
                                         @method('POST')
                                         <button type="submit"
                                             class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Approve</button>
                                     </form>
+                                    @endif
                                     <form action="/reject-order/{{ $order->id }}" method="POST">
                                         @csrf
                                         @method('POST')
@@ -87,6 +99,8 @@
                                 Order Status</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Price</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Payment Statement</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Actions</th>
                         </tr>
@@ -103,12 +117,20 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $order->status }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     MYR {{ number_format($order->total_price, 2, '.', '') }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    @if ($order->payment)
+                                    <a href="{{ asset($order->payment->payment_statement) }}" target="_blank"
+                                        class="text-blue-500 hover:underline">View PDF</a>
+                                    @else
+                                        <span class="text-red-500">No payment statement</span>
+                                    @endif
+                                    </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex flex-row">
                                     <a href="/view/order/{{ $order->id }}"
                                         class="inline-block px-4 py-2 mr-2 bg-indigo-600 text-white font-semibold text-xs rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:-translate-y-1">
                                         View
                                     </a>
-                                    <a href="/receipt/{{ $order->id }}"
+                                    <a href="/admin/receipt/{{ $order->id }}"
                                         class="inline-block px-4 py-2 mr-2 bg-yellow-500 text-white font-semibold text-xs rounded-lg shadow-md hover:bg-yellow-600 transition duration-300 ease-in-out transform hover:-translate-y-1">
                                         Receipt
                                     </a>

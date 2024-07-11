@@ -69,7 +69,7 @@ class CarsController extends Controller
         }
         $car->save();
 
-        return redirect('/index')->with('success', 'Car has been added successfully!');
+        return redirect('/view-all-cars')->with('success', 'Car has been added successfully!');
     }
 
     public function edit(Car $car)

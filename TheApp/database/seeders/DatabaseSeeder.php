@@ -5,10 +5,12 @@ namespace Database\Seeders;
 use App\Models\Admin;
 use App\Models\Car;
 use App\Models\Customer;
+use App\Models\Feedbacks;
 use App\Models\Inquiries;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\User;
+use Carbon\Carbon;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -43,9 +45,9 @@ class DatabaseSeeder extends Seeder
             // 'name' => 'Test Car',
             // 'id' => 1,
             'brand' => 'Toyota',
-            'model' => 'Corolla',
+            'model' => 'Vios',
             'type' => 'Sedan',
-            'image' => 'https://via.placeholder.com/150',
+            'image' => 'http://127.0.0.1:8000/images/carimage/toyotavios.png',
             'price' => 200,
         ]);
 
@@ -55,7 +57,7 @@ class DatabaseSeeder extends Seeder
             'brand' => 'Honda',
             'model' => 'Civic',
             'type' => 'Hatcback',
-            'image' => 'https://via.placeholder.com/150',
+            'image' => 'http://127.0.0.1:8000/images/carimage/hondacivic.png',
             'price' => 500,
         ]);
 
@@ -65,7 +67,7 @@ class DatabaseSeeder extends Seeder
             'brand' => 'Nissan',
             'model' => 'Skyline-GTR',
             'type' => 'Super Car',
-            'image' => 'https://via.placeholder.com/150',
+            'image' => 'http://127.0.0.1:8000/images/carimage/gtr.jpeg',
             'price' => 1200,
         ]);
 
@@ -75,7 +77,7 @@ class DatabaseSeeder extends Seeder
             'brand' => 'Honda',
             'model' => 'HR-V',
             'type' => 'SUV',
-            'image' => 'https://via.placeholder.com/150',
+            'image' => 'http://127.0.0.1:8000/images/carimage/hondahrv.png',
             'price' => 400,
         ]);
 
@@ -85,7 +87,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test Inquiry',
             'email' => 'sheesh@gmail.com',
             'phone' => '0123456789',
-            'date' => '2021-12-01',
+            'date' => '2024-07-10',
             'time' => '12:00',
             'message' => 'Hello, I would like to inquire about your services.',
             'services' => 'Car Rental',
@@ -95,8 +97,8 @@ class DatabaseSeeder extends Seeder
         Order::create([
             'customer_id' => 1,
             'car_id' => 1,
-            'pickup_date' => '2021-12-01',
-            'return_date' => '2021-12-05',
+            'pickup_date' => Carbon::now()->addDay(2)->format('Y-m-d'),
+            'return_date' => Carbon::now()->addDay(7)->format('Y-m-d'),
             'pickup_location' => 'New York',
             'return_location' => 'New York',
             'total_price' => 1000,
@@ -105,27 +107,31 @@ class DatabaseSeeder extends Seeder
         Order::create([
             'customer_id' => 1,
             'car_id' => 1,
-            'pickup_date' => '2021-12-04',
-            'return_date' => '2021-12-09',
+            'pickup_date' => Carbon::now()->addDay(8)->format('Y-m-d'),
+            'return_date' => Carbon::now()->addDay(10)->format('Y-m-d'),
             'pickup_location' => 'KL',
             'return_location' => 'KL',
-            'total_price' => 1000,
+            'total_price' => 400,
             'status' => 'Pending Payment',
         ]);
         Order::create([
             'customer_id' => 1,
-            'car_id' => 1,
-            'pickup_date' => '2021-12-12',
-            'return_date' => '2021-12-18',
+            'car_id' => 2,
+            'pickup_date' => Carbon::now()->addDay(2)->format('Y-m-d'),
+            'return_date' => Carbon::now()->addDay(4)->format('Y-m-d'),
             'pickup_location' => 'KL',
             'return_location' => 'KL',
             'total_price' => 1000,
             'status' => 'Pending Payment',
         ]);
         Payment::create([
-            'order_id' => 2,
-            'payment_statement' => 'Paid',
+            'order_id' => 1,
+            'payment_statement' => 'http://127.0.0.1:8000/images/carimage/receipt.pdf',
         ]);
-        
+        Feedbacks::create([
+            'customer_id' => 1,
+            'rating' => 5,
+            'message' => 'Great service!',
+        ]);
     }
 }

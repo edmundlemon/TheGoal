@@ -28,7 +28,7 @@ class OrdersController extends Controller
 
     public function showAll()
     {
-        $pendingOrders = Order::where('status', 'Pending Payment')->get();
+        $pendingOrders = Order::where('status', 'Pending Payment')->orWhere('status', 'Pending Approval')->get();
         $approvedOrders = Order::where('status', 'Approved')->get();
         $rejectedOrders = Order::where('status', 'Rejected')->get();
         $returnedOrders = Order::where('status', 'Returned')->get();
@@ -51,7 +51,7 @@ class OrdersController extends Controller
             'pickup_location' => 'required',
             'return_location' => 'required',
         ]);
-
+        
         $startDate = Carbon::parse($request->pickup_date);
         $endDate = Carbon::parse($request->return_date);
         $days = $startDate->diffInDays($endDate);
@@ -69,10 +69,22 @@ class OrdersController extends Controller
         $order->return_location = $request->return_location;
         $order->total_price = $total_price;
         // dd($order);
+        // dd($order);
         $order->save();
 
         return redirect()->route('customer.order.show', $order->id)
             ->with('success', 'Order created successfully.');
+    }
+
+    public function edit(Order $order)
+    {
+        if (auth('customer')->user()->id != $order->customer_id) {
+            return redirect('forbidden');
+        }
+        elseif ($order->status != 'Pending Payment') {
+            return redirect('forbidden')->with('error', 'You cannot edit this order');
+        }
+        return view('edit-order', compact('order'));
     }
 
     public function update(Request $request, Order $order){
@@ -80,7 +92,7 @@ class OrdersController extends Controller
             return redirect('forbidden');
         }
         elseif ($order->status != 'Pending Payment') {
-            return redirect('forbidden');
+            return redirect('forbidden')->with('error', 'You cannot edit this order');
         }
         $request->validate([
             'pickup_date' => 'required|after:today',
@@ -93,18 +105,21 @@ class OrdersController extends Controller
         $days = $startDate->diffInDays($endDate);
 
         $car = Car::find($request->car_id);
-        $total_price = $days * $car->price;
+        $total_price = $days * $order->car->price;
         $order->pickup_date = $request->pickup_date;
         $order->return_date = $request->return_date;
         $order->pickup_location = $request->pickup_location;
         $order->return_location = $request->return_location;
         $order->total_price = $total_price;
+        // dd($order);
         $order->save();
+        return redirect()->route('customer.order.show', $order->id)
+            ->with('success', 'Order edited successfully.');
     }
 
     public function showPending()
     {
-        $pendingPaymentOrders = Order::where('status', 'Pending Payment')->get();
+        $pendingPaymentOrders = Order::where('status', 'Pending Payment')->orWhere('status', 'Pending Approval')->get();
         // dd($pendingPaymentOrders);
         return view('show-pending-order', [
             'orders' => $pendingPaymentOrders
@@ -120,7 +135,7 @@ class OrdersController extends Controller
             return redirect('forbidden');
         }
         $order->delete();
-        return redirect()->route('index')
+        return redirect()->back()
             ->with('success', 'Order deleted successfully.');
     }
 

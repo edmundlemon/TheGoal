@@ -5,7 +5,7 @@
 @section('content')
     <br><br><br><br><br>
     <div class="container flex justify-center">
-        <div class="flex flex-col w-full ml-[350px]">
+        <div class="flex flex-col w-full max-w-4xl">
             <table class="min-w-full divide-y divide-gray-200 border">
                 <thead class="bg-gray-50">
                     <tr>
@@ -59,4 +59,5 @@
             </table>
         </div>
     </div>
+    
 @endsection
