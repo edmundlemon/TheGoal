@@ -11,6 +11,10 @@
                     <tr>
                         <th scope="col"
                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            ID
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Customer Name
                         </th>
                         <th scope="col"
@@ -26,6 +30,9 @@
                 <tbody class="bg-white divide-y divide-gray-200">
                     @foreach ($orders as $order)
                         <tr class="border-b border-gray-200">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{ $order->customer_id}}</div>
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $order->customer->name }}</div>
                             </td>
@@ -45,13 +52,13 @@
                                         <button type="submit"
                                             class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Approve</button>
                                     </form>
-                                    <form action="/reject-order/{{ $order->id }}" method="POST">
-                                        @csrf
-                                        @method('POST')
-                                        <button type="submit"
-                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Reject</button>
-                                    </form>
                                 @endif
+                                <form action="/reject-order/{{ $order->id }}" method="POST">
+                                    @csrf
+                                    @method('POST')
+                                    <button type="submit"
+                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Reject</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -59,5 +66,5 @@
             </table>
         </div>
     </div>
-    
+
 @endsection
