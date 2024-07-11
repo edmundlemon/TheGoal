@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Default Title')</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
+    <link rel="icon" href="{{ asset('images/carimage/logo.png') }}" type="image/png"/>
+    
     {{-- @vite('resources/css/app.css') --}}
     @yield('styles')
     <style>
