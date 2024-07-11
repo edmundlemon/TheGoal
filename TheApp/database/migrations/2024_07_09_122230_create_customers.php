@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('password');
             $table->date('birth_date');
             $table->string('gender');
+            $table->string('security_question');
+            $table->string('security_answer');
             $table->timestamps();
         });
     }

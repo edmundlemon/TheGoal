@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'User 1',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'User 1',
+        //     'email' => 'test@example.com',
+        // ]);
         Customer::create([
             // 'id' => 1,
             'name' => 'Test Customer',
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         Admin::create([
             // 'id' => 1,
             'name' => 'Admin 1',
-            'email' => 'hello@gmail.com',
+            'email' => 'admin@caren.com',
             'password' => bcrypt('password'),
         ]);
         Car::create([
@@ -126,7 +126,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Payment::create([
             'order_id' => 1,
-            'payment_statement' => 'http://127.0.0.1:8000/images/carimage/receipt.pdf',
+            'payment_statement' => 'http://127.0.0.1:8000/pdfs/statement/receipt.pdf',
         ]);
         Feedbacks::create([
             'customer_id' => 1,
