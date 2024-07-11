@@ -19,6 +19,10 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/forgot-password', function () {
+    return view('forgot-password');
+});
+
 Route::get('/menu', [CarsController::class, 'index'])->name('menu');
 
 
