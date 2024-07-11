@@ -11,19 +11,25 @@
     <section class="feedback-section">
         <div class="feedback-container">
             <h2>Our Happy Customers</h2>
-            <div class="feedback-list">
+            <div class="flex flex-row space-x-2">
                 <!-- Sample feedback items -->
+
                 @foreach ($feedbacks as $feedback)
-                    <div class="feedback-item">
-                        <img src="https://th.bing.com/th/id/OIP.HukOvx2AX47qNqZ8F0pXlwHaFF?w=800&h=550&rs=1&pid=ImgDetMain"
-                            alt="Customer Image">
-                        <div class="feedback-content">
-                            <h3>{{ $feedback->message }}</h3>
-                            <p>{{ $feedback->name }}</p>
-                            <p>★★★★★</p>
+                    <!-- Feedback item component -->
+                    <div class="feedback-item flex flex-col items-start justify-start mb-4 w-1/2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Windows_10_Default_Profile_Picture.svg"
+                            alt="Customer Image" class="w-12 h-12 rounded-full mr-4">
+                        <div class="feedback-content flex flex-col items-start">
+                            <h3 class="text-lg font-thin mb-1">{{ $feedback->message }}</h3>
+                            <p class="text-white font-bold text-3xl">{{ $feedback->customer->name }}</p>
+                            <div class="rating flex">
+                                @for ($i = 0; $i < $feedback->rating; $i++)
+                                    <i class="fas fa-star text-yellow-500"></i>
+                                @endfor
+                            </div>
                         </div>
                     </div>
-
+                @endforeach
 
                 <!-- Add more feedback items as needed -->
             </div>
@@ -56,7 +62,7 @@
                 </div>
                 <div class="form-group">
                     <label for="message">Feedback:</label>
-                    <textarea id="message" name="message" rows="4" class="text-black" required></textarea>
+                    <textarea id="message" name="message" rows="4" class="text-black" maxlength="80" required></textarea>
                 </div>
                 <button type="submit">Submit Feedback</button>
             </form>
@@ -176,11 +182,7 @@
             margin-bottom: 20px;
         }
 
-        .feedback-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
+
 
         .feedback-item {
             background-color: rgba(255, 255, 255, 0.2);

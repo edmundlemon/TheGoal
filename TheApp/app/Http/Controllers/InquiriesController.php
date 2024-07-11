@@ -15,6 +15,19 @@ class InquiriesController extends Controller
         ]);
     }
 
+    public function destroy($id)
+    {
+        Inquiries::destroy($id);
+        return redirect()->back()->with('success', 'Inquiry deleted successfully');
+    }
+
+    public function adminIndex()
+    {
+        return view('view-all-inquiries', [
+            'inquiries' => Inquiries::all(),
+        ]);
+    }
+    
     public function store(Request $request)
     {
 

@@ -11,7 +11,6 @@ class Feedbacks extends Model
 
     protected $fillable = [
         'customer_id',
-        'email',
         'message',
         'rating',
     ];

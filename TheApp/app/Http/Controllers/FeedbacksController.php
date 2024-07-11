@@ -15,6 +15,19 @@ class FeedbacksController extends Controller
         ]);
 
     }
+
+    public function destroy($id)
+    {
+        Feedbacks::destroy($id);
+        return redirect()->back()->with('success', 'Feedback deleted successfully');
+    }
+
+    public function adminIndex()
+    {
+        return view('view-all-feedback', [
+            'feedbacks' => Feedbacks::all(),
+        ]);
+    }
     
     public function store(Request $request)
     {
@@ -26,8 +39,7 @@ class FeedbacksController extends Controller
         ]);
 
         $feedback = new Feedbacks();
-        $feedback->name = auth('customer')->user()->name;
-        $feedback->email = auth('customer')->user()->email;
+        $feedback->customer_id = auth('customer')->user()->id;
         $feedback->message = $request->message;
         $feedback->rating = $request->rating;
         $feedback->save();

@@ -26,6 +26,21 @@ class OrdersController extends Controller
         ]);
     }
 
+    public function showAll()
+    {
+        $pendingOrders = Order::where('status', 'Pending Payment')->get();
+        $approvedOrders = Order::where('status', 'Approved')->get();
+        $rejectedOrders = Order::where('status', 'Rejected')->get();
+        $returnedOrders = Order::where('status', 'Returned')->get();
+        return view('view-all-orders', [
+            'pendingOrders' => $pendingOrders,
+            'approvedOrders' => $approvedOrders,
+            'rejectedOrders' => $rejectedOrders,
+            'returnedOrders' => $returnedOrders
+
+        ]);
+    }
+
     public function store(Request $request, Customer $customer)
     {
         $request->validate([
@@ -118,7 +133,7 @@ class OrdersController extends Controller
         else {
             return redirect('forbidden');
         }
-        return redirect()->route('pending.orders')
+        return redirect()->back()
             ->with('success', 'Order approved successfully.');
     }
 
@@ -131,9 +146,8 @@ class OrdersController extends Controller
         else {
             return redirect('forbidden');
         }
-        $payment = Payment::where('order_id', $order->id)->first();
-        $payment->delete();
-        return redirect()->route('pending.orders')
+
+        return redirect()->back()
             ->with('success', 'Order rejected successfully.');
     }
 
@@ -152,5 +166,18 @@ class OrdersController extends Controller
             'days' => $days,
         ]
     );
+    }
+
+    public function returnedOrder(Order $order)
+    {
+        if (auth('admin')->user()) {
+            $order->status = 'Returned';
+            $order->save();
+        }
+        else {
+            return redirect('forbidden');
+        }
+        return redirect()->back()
+            ->with('success', 'Order returned successfully.');
     }
 }
