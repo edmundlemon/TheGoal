@@ -19,7 +19,7 @@
             <p>CAREN Car Rental offers a wide range of vehicles for your convenience, whether you're a tourist exploring
                 the city or a local running errands. Our hassle-free booking process and top-notch customer service
                 ensure a smooth experience. Discover Kuala Lumpur with CAREN today!</p>
-            <a href="#contact" class="btn">Get in Touch</a>
+            <a href="/inquiries" class="btn">Get in Touch</a>
         </div>
     </section>
 
