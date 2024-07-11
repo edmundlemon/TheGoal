@@ -33,7 +33,7 @@
                         {{ $order->car->model }}</span></p>
                 <p class="text-gray-800 font-medium">Car Price (per day): <span
                         class="text-gray-600 font-semibold"><b>MYR</b>
-                        {{  number_format($order->car->price, 2, '.', '') }}</span></p>
+                        {{ number_format($order->car->price, 2, '.', '') }}</span></p>
             </div>
         </div>
         <div class="mb-4">
@@ -64,29 +64,36 @@
         </div>
 
         <div class="mb-4">
-            <p class="text-gray-800 font-medium">Total Price: <span 
-                class="text-gray-600 font-semibold"><b>MYR </b>{{ number_format($order->total_price, 2, '.', '') }}</span></p>
+            <p class="text-gray-800 font-medium">Total Price: <span class="text-gray-600 font-semibold"><b>MYR
+                    </b>{{ number_format($order->total_price, 2, '.', '') }}</span></p>
             <p class="text-gray-800 font-medium">Status: <span id="status"
                     class="text-gray-600 font-semibold">{{ $order->status }}</span></p>
         </div>
         @if ($order->status === 'Pending Payment' && Auth::guard('customer')->check())
-        <div class="w-full mb-4">
-            <form action="/upload-payment-receipt/{{ $order->id }}" method="POST" 
-                class="flex flex-col w-full space-y-2"
-                enctype="multipart/form-data">
-                @csrf
-                @method('POST')
-                <input type="file" name="payment_statement" class="border rounded w-full p-2">
-                @error('payment_statement')
-                    <span class="text-red-500 text-sm">
-                        {{ $message }}
-                    </span>  
-                @enderror
-                <button type="submit"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Upload
-                    Receipt</button>
-            </form>
-        </div>
+            <div class="flex items-center flex-col justify-center">
+                <h1 class="font-bold text-3xl">Pay via bank transfer</h1>
+                <p class="text-2xl text-red-500">Hong Leong Bank</p>
+                <div class="flex flex-row space-x-2">
+                    <p class="font-bold">Account Number:</p>
+                    <p class="font-bold text-indigo-500">2614378567</p>
+                </div>
+            </div>
+            <div class="w-full mb-4">
+                <form action="/upload-payment-receipt/{{ $order->id }}" method="POST"
+                    class="flex flex-col w-full space-y-2" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
+                    <input type="file" name="payment_statement" class="border rounded w-full p-2">
+                    @error('payment_statement')
+                        <span class="text-red-500 text-sm">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                    <button type="submit"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Upload
+                        Receipt</button>
+                </form>
+            </div>
         @endif
     </div>
 
